@@ -56,7 +56,7 @@ public class HienThiCacLoaiHinh {
                 case 0:
                     System.exit(0);
                 default:
-                    System.out.println("No choice1");
+                    System.out.println("No choice");
             }
         }
 
