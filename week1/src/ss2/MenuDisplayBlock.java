@@ -3,7 +3,7 @@ package ss2;
 import java.util.Scanner;
 
 
-public class HienThiCacLoaiHinh {
+public class MenuDisplayBlock {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
 

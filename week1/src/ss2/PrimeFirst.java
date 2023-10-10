@@ -2,7 +2,7 @@ package ss2;
 
 import java.util.Scanner;
 
-public class NguyenToDauTien {
+public class PrimeFirst {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         int count = 0;
