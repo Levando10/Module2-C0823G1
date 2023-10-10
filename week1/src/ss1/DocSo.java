@@ -26,7 +26,12 @@ public class DocSo {
             return tensArr[number / 10] + " " + onesArr[number % 10];
         }
         if (number <= 999) {
-            return onesArr[number / 100] + " hundred and " + docSoThanhChu(number % 100);
+            String hundred = " hundred and ";
+            if (number % 100 == 0){
+                 hundred = " hundred ";
+            }
+
+            return onesArr[number / 100] + hundred + docSoThanhChu(number % 100);
         }
 
         return "";
