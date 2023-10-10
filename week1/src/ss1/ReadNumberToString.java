@@ -2,7 +2,7 @@ package ss1;
 
 import java.util.Scanner;
 
-public class DocSo {
+public class ReadNumberToString {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         System.out.print("Nhập số cần chuyển : ");
