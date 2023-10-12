@@ -19,7 +19,7 @@ public class CountChar {
             }
         }
 
-        
+
         System.out.println("Kí tự " + checkChar + " Xuất hiện : " + count + " lần!!!");
 
 
