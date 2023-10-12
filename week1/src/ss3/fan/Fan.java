@@ -14,13 +14,12 @@ public class Fan {
     }
 
 
-
     public int getSpeed() {
         return speed;
     }
 
     public void setSpeed(int speed) {
-        if (on && speed > 0 && speed <= 3){
+        if (on && speed > 0 && speed <= 3) {
             this.speed = speed;
         }
 
@@ -39,7 +38,7 @@ public class Fan {
     }
 
     public void setColor(String color) {
-        if (on){
+        if (on) {
             this.color = color;
         }
 
@@ -50,7 +49,7 @@ public class Fan {
     }
 
     public void setRadius(double radius) {
-        if (on){
+        if (on) {
             this.radius = radius;
         }
 
@@ -70,7 +69,7 @@ public class Fan {
 
     @Override
     public String toString() {
-        if (on){
+        if (on) {
             return "Fan{" + "fan is on " +
                     " speed= " + speed +
                     ", on= " + on +
@@ -78,7 +77,7 @@ public class Fan {
                     ", radius=" + radius +
                     '}';
         } else {
-            return  "fan is off";
+            return "fan is off";
         }
 
     }

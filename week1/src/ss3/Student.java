@@ -1,6 +1,6 @@
 package ss3;
-
 public class Student {
+
     public String name;
     private int age;
     private double height;

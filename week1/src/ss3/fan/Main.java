@@ -1,5 +1,4 @@
 package ss3.fan;
-
 public class Main {
     public static void main(String[] args) {
 
@@ -16,5 +15,6 @@ public class Main {
         fan2.turnOn();
         fan2.setSpeed(2);
         System.out.println(fan2.toString());
+
     }
 }
