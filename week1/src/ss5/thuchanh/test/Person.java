@@ -7,11 +7,13 @@ public class Person {
   public static String school = "Code Gym";
 
   public Person() {
+    school = "Code Gym";
   }
 
   public Person(String name, String email) {
     this.name = name;
     this.email = email;
+    school = "Code Gym";
 
   }
 
@@ -42,8 +44,9 @@ public class Person {
   @Override
   public String toString() {
     return "Person{" +
-        "name='" + name + '\'' +
-        ", email='" + email + '\'' +
+        "name = '" + name + '\'' +
+        ", email ='" + email + '\'' +
+        ", school ='" + school + '\'' +
         '}';
   }
 }

@@ -1,10 +1,12 @@
 package ss3.quadraticequation;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class Main {
 
   public static void main(String[] args) {
+
     Scanner scanner = new Scanner(System.in);
     System.out.print("Enter a: ");
     double numA = scanner.nextDouble();
