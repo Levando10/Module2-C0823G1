@@ -79,7 +79,7 @@ public class Fan {
           '}';
     } else {
       return "Fan{" + "fan is Off " +
-          " speed= " + speed +
+          " speed = 0 " +
           ", on= " + on +
           ", color='" + color + '\'' +
           ", radius=" + radius +
