@@ -1,4 +1,4 @@
-package ss6.baitap.Point2DAndPoint3D;
+package ss6.baitap.point2d_and_point3d;
 
 import java.util.Arrays;
 

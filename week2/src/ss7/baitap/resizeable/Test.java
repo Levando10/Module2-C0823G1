@@ -8,7 +8,7 @@ public class Test {
     Shape rectangle = new Rectangle(12, 10);
     Shape square = new Square(4);
     Shape[] list = {circle, rectangle, square};
-    System.out.println("Trước khi sắp xếp !!!");
+    System.out.println("Trước khi thay đổi !!!");
     for (Shape shape : list) {
       if (shape instanceof Circle) {
         Circle circle1 = (Circle) shape;
@@ -22,7 +22,7 @@ public class Test {
       }
 
     }
-    System.out.println("Sau khi sắp xếp !!!");
+    System.out.println("Sau khi thay đổi !!!");
     for (Shape shape : list) {
       if (shape instanceof Circle) {
         Circle circle1 = (Circle) shape;

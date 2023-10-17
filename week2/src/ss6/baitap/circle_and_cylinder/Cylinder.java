@@ -1,4 +1,4 @@
-package ss6.baitap.CircleAndCylinder;
+package ss6.baitap.circle_and_cylinder;
 
 public class Cylinder extends Circle {
 
