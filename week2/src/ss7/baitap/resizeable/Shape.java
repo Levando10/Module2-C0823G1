@@ -1,5 +1,5 @@
 package ss7.baitap.resizeable;
 
-public class Shape {
+public abstract class Shape {
 
 }

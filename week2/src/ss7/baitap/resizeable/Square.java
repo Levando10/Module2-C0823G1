@@ -2,6 +2,7 @@ package ss7.baitap.resizeable;
 
 public class Square extends Shape implements Resizeable {
 
+
   private double side;
 
   public Square() {
