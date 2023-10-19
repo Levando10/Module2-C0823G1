@@ -6,7 +6,7 @@ public class Test {
     Object newCircle1 = new NewCircle(1);
     Object newRectangle = new NewRectangle(10, 6);
     Object newSquare1 = new NewSquare(5);
-    Object newSquare2 = new NewSquare(5);
+    Object newSquare2 = new NewSquare(10);
     Object newCircle2 = new NewCircle(8);
     Object[] list = {newCircle1, newSquare2, newRectangle, newSquare1, newCircle2};
 

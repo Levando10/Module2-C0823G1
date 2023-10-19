@@ -2,8 +2,19 @@ package ss7.baitap.resizeable;
 
 public class Rectangle extends Shape implements Resizeable {
 
+
   private double width;
   private double height;
+
+  public Rectangle(String color, String painted, double width, double height) {
+    super(color, painted);
+    this.width = width;
+    this.height = height;
+  }
+
+  public Rectangle(String color, String painted) {
+    super(color, painted);
+  }
 
   public Rectangle(double width, double height) {
     this.width = width;

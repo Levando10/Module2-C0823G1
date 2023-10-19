@@ -1,42 +1,34 @@
 package ss7.baitap.resizeable;
 
-public class Square extends Shape implements Resizeable {
-
-
-  private double side;
+public class Square extends Rectangle {
 
   public Square() {
   }
 
-  public double getSide() {
-    return side;
+  public Square(String color, String painted, double side) {
+    super(color, painted, side, side);
   }
 
-  public void setSide(double side) {
-    this.side = side;
+  public Square(String color, String painted) {
+    super(color, painted);
   }
 
   public Square(double side) {
-    this.side = side;
+    super(side, side);
   }
 
-  @Override
-  public double getArea() {
-    return Math.pow(this.side, 2);
+
+  public double getSide() {
+    return super.getWidth();
+  }
+
+  public void setSide(double side) {
+    super.setWidth(side);
+    super.setHeight(side);
   }
 
   @Override
   public String toString() {
-    return "Square{" +
-        "side=" + side +
-        '}';
-  }
-
-  @Override
-  public void resize(double percent) {
-    if (percent >= 1 && percent <= 100) {
-      this.side = this.side + (this.side / 100) * percent;
-    }
-
+    return "Square{side = } " + super.getWidth();
   }
 }
