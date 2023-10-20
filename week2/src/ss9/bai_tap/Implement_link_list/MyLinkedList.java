@@ -139,5 +139,21 @@ public class MyLinkedList<E> {
     }
     return -1;
   }
+  public E get(int index) {
+    Node temp = head;
+    for (int i = 0; i < index; i++) {
+      temp = temp.next;
+    }
+    return (E) temp.data;
+  }
+
+  public void clear() {
+    Node temp = head;
+    while (temp.next != null) {
+      temp.data = null;
+      temp = temp.next;
+    }
+    numNodes = 0;
+  }
 
 }//PARENtCLASS

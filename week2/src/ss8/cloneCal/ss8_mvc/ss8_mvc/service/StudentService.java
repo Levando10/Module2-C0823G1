@@ -9,4 +9,19 @@ public class StudentService implements IStudentService{
     public void showList() {
         iStudentRepository.showList();
     }
+
+    @Override
+    public void addStudent() {
+        iStudentRepository.addStudent();
+    }
+
+    @Override
+    public void deleteStudent() {
+iStudentRepository.deleteStudent();
+    }
+
+    @Override
+    public void editStudent() {
+        iStudentRepository.editStudent();
+    }
 }
