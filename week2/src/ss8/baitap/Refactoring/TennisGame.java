@@ -6,8 +6,16 @@ public class TennisGame {
   private static final int FIRST_SCORE = 1;
   private static final int SECOND_SCORE = 2;
   private static final int THIRD_SCORE = 3;
-
   private static final char SUB = '-';
+
+  private static final String LOVE = "Love";
+  private static final String FIFTEEN = "Fifteen";
+  private static final String THIRTY = "Thirty";
+  private static final String FORTY = "Forty";
+  private static final String ALL = "Forty";
+  private static final String DEUCE = "Deuce";
+  private static final String ADVANTAGE = "Advantage";
+  private static final String RESULT = "Win for ";
 
 
   public static String getScore(String firstPlayer, String secondPlayer, int scoreFirstPlayer,
@@ -34,16 +42,16 @@ public class TennisGame {
       }
       switch (tempScore) {
         case INITIAL_SCORE:
-          score += "Love";
+          score += LOVE;
           break;
         case FIRST_SCORE:
-          score += "Fifteen";
+          score += FIFTEEN;
           break;
         case SECOND_SCORE:
-          score += "Thirty";
+          score += THIRTY;
           break;
         case THIRD_SCORE:
-          score += "Forty";
+          score += FORTY;
           break;
       }
     }
@@ -52,11 +60,11 @@ public class TennisGame {
 
   public static String considerEqualScore(int scorePlayer1) {
     return switch (scorePlayer1) {
-      case INITIAL_SCORE -> "Love-All";
-      case FIRST_SCORE -> "Fifteen-All";
-      case SECOND_SCORE -> "Thirty-All";
-      case THIRD_SCORE -> "Forty-All";
-      default -> "Deuce";
+      case INITIAL_SCORE -> LOVE + ALL;
+      case FIRST_SCORE -> FIFTEEN + ALL;
+      case SECOND_SCORE -> THIRTY + ALL;
+      case THIRD_SCORE -> FORTY + ALL;
+      default -> DEUCE;
     };
   }
 
@@ -66,13 +74,13 @@ public class TennisGame {
     String score;
     int minusResult = scoreFirstPlayer - scoreSecondPlayer;
     if (minusResult == 1) {
-      score = "Advantage " + firstPlayer;
+      score = ADVANTAGE + firstPlayer;
     } else if (minusResult == -1) {
-      score = "Advantage " + secondPlayer;
+      score = ADVANTAGE + secondPlayer;
     } else if (minusResult >= 2) {
-      score = "Win for " + firstPlayer;
+      score = RESULT + firstPlayer;
     } else {
-      score = "Win for " + secondPlayer;
+      score = RESULT + secondPlayer;
     }
     return score;
   }
