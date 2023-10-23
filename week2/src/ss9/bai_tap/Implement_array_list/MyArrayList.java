@@ -7,7 +7,7 @@ public class MyArrayList<E> {
   private int size = 0;
   private static final int DEFAULT_CAPACITY = 10;
   private Object elements[];
-  private Object newElement[];
+
 
   public MyArrayList() {
     elements = new Object[DEFAULT_CAPACITY];
@@ -53,7 +53,7 @@ public class MyArrayList<E> {
   public void addFirst(E e) {
     size++;
 
-    for (int i = 0; i < elements.length - 1; i++) {
+    for (int i = 0; i < size() - 1; i++) {
       E temp = (E) elements[i];
       elements[i] = e;
       e = temp;
