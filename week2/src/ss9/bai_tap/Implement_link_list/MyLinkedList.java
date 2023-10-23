@@ -52,13 +52,13 @@ public class MyLinkedList<E> {
     numNodes++;
   }
 
-  public Object get(int index) {
-    Node temp = head;
-    for (int i = 0; i < index; i++) {
-      temp = temp.next;
-    }
-    return temp.data;
-  }
+//  public Object get(int index) {
+//    Node temp = head;
+//    for (int i = 0; i < index; i++) {
+//      temp = temp.next;
+//    }
+//    return temp.data;
+//  }
 
   public int size() {
     return numNodes;
