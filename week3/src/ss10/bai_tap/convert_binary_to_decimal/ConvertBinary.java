@@ -16,19 +16,19 @@ public class ConvertBinary {
     int number = scanner.nextInt();
 
     int tempNumber;
-    while (number != 0){
-    tempNumber = number % 2;
+    while (number != 0) {
+      tempNumber = number % 2;
       stack.add(tempNumber);
-    number = number / 2;
+      number = number / 2;
     }
 
-    int length = stack.size();
-    System.out.println();
-    for (int i = 0; i < length; i++) {
-      resultBinary.add(stack.pop());
-    }
+//    int length = stack.size();
+//    System.out.println();
+//    for (int i = 0; i < length; i++) {
+//      resultBinary.add(stack.pop());
+//    }
 
-    System.out.print("Chuyển qua hệ nhị phân là : "+resultBinary);
+    System.out.print("Chuyển qua hệ nhị phân là : " + stack);
 
   }
 }

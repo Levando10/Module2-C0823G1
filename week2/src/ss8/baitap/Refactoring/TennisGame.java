@@ -12,7 +12,7 @@ public class TennisGame {
   private static final String FIFTEEN = "Fifteen";
   private static final String THIRTY = "Thirty";
   private static final String FORTY = "Forty";
-  private static final String ALL = "Forty";
+  private static final String ALL = "All";
   private static final String DEUCE = "Deuce";
   private static final String ADVANTAGE = "Advantage";
   private static final String RESULT = "Win for ";
