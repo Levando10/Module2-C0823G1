@@ -53,7 +53,7 @@ public class MyArrayList<E> {
   public void addFirst(E e) {
     size++;
 
-    for (int i = 0; i < size() - 1; i++) {
+    for (int i = 0; i < size(); i++) {
       E temp = (E) elements[i];
       elements[i] = e;
       e = temp;
