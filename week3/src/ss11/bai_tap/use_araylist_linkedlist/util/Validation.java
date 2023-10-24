@@ -1,4 +1,4 @@
-package ss11.bai_tap.use_araylist_linkedlist;
+package ss11.bai_tap.use_araylist_linkedlist.util;
 
 import java.util.Scanner;
 
@@ -56,7 +56,6 @@ public class Validation {
       }
     }
   }
-
 
 
 }

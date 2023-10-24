@@ -1,4 +1,4 @@
-package ss11.bai_tap.use_araylist_linkedlist;
+package ss11.bai_tap.use_araylist_linkedlist.module;
 
 public class Product implements Comparable<Product>{
   private String id;

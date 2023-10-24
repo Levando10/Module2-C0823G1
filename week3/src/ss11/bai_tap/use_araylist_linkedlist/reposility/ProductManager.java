@@ -1,17 +1,30 @@
-package ss11.bai_tap.use_araylist_linkedlist;
+package ss11.bai_tap.use_araylist_linkedlist.reposility;
 
 import java.util.ArrayList;
 
-import java.util.Scanner;
+import ss11.bai_tap.use_araylist_linkedlist.module.Product;
+import ss11.bai_tap.use_araylist_linkedlist.util.Validation;
 
-public class ProductManager {
+public class ProductManager implements IProductManager{
 
   public ProductManager() {
   }
 
-  ArrayList<Product> listProduct = new ArrayList<>();
+ private static ArrayList<Product> listProduct = new ArrayList<>();
 
+  static {
+    Product product1 = new Product("1", "máy tính", 136000);
+    Product product2 = new Product("2", "xe đạp", 37000);
+    Product product3 = new Product("3", "màn hình", 70000);
+    Product product4 = new Product("4", "điện thoại", 19450);
 
+    listProduct.add(product1);
+    listProduct.add(product2);
+    listProduct.add(product3);
+    listProduct.add(product4);
+  }
+
+  @Override
   public void addProduct() {
     System.out.print("Nhập id sản phẩm : ");
     String id = Validation.checkInputString();
@@ -23,12 +36,14 @@ public class ProductManager {
     Product product = new Product(id, name, price);
     listProduct.add(product);
   }
+  @Override
 
   public void showProduct() {
     for (Product product : listProduct) {
       System.out.println(product.toString());
     }
   }
+  @Override
 
   public void editProduct() {
 
@@ -58,9 +73,9 @@ public class ProductManager {
     System.out.print("Không tìm thấy sản phẩm cần sửa !!!");
 
   }
+  @Override
 
   public void deleteProduct() {
-    Scanner scanner = new Scanner(System.in);
     System.out.print("Nhập id sản phẩm muốn xóa : ");
     String id = Validation.checkInputString();
     for (Product product : listProduct) {
@@ -80,6 +95,7 @@ public class ProductManager {
     }
     System.out.print("Không tìm thấy sản phẩm cần xóa !!!");
   }
+  @Override
 
   public void findProduct() {
     System.out.print("Nhập tên sản phẩm cần tìm : ");
@@ -93,6 +109,7 @@ public class ProductManager {
     }
     System.out.println("Tên sản phẩm không có trong hệ thống!!!");
   }
+  @Override
 
   public void sortProduct() {
     listProduct.sort( null);
