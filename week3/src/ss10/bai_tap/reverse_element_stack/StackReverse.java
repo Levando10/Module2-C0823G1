@@ -14,9 +14,10 @@ public class StackReverse {
     System.out.print("Nhập số lượng phần tử trong Stack : ");
     int sizeStack = scanner.nextInt();
 
+    int inputElement;
     for (int i = 0; i < sizeStack; i++) {
       System.out.print("Nhập phần tử thứ  " + (i + 1) + " :");
-      int inputElement = scanner.nextInt();
+       inputElement = scanner.nextInt();
       stack.push(inputElement);
     }
 
@@ -36,7 +37,7 @@ public class StackReverse {
     System.out.println("Trức khi hoán đổi : " + Arrays.toString(arrayWord));
 
     for (int i = arrayWord.length - 1; i >= 0; i--) {
-      stringStack.push(arrayWord[i]);
+      stringStack.add(arrayWord[i]);
     }
     System.out.println("Sau khi hoán đổi : " + stringStack);
 

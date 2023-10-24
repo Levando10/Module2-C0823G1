@@ -8,8 +8,9 @@ public class CountOccurrences {
     String str = "The quick dog jump dog over the cat lazy brown cat";
     str = str.toLowerCase();
     TreeMap<Character, Integer> strings = new TreeMap<>();
+    int count;
     for (int i = 0; i < str.length(); i++) {
-      int count = 0;
+       count = 0;
       for (int j = 0; j < str.length(); j++) {
 
         if (str.charAt(i) == str.charAt(j)) {
