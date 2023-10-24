@@ -16,7 +16,7 @@ public class Validation {
         }
         return result;
       } catch (NumberFormatException e) {
-        System.err.println("Just input from " + min + " to " + max);
+        System.err.print("Just input from " + min + " to " + max + " : ");
       }
     }
   }
@@ -25,7 +25,9 @@ public class Validation {
     while (true) {
       String result = sc.nextLine().trim();
       if (result.length() == 0) {
-        System.err.println("Not Empty");
+        System.err.println("Not Empty!!!");
+        System.out.print("\nEnter again : ");
+
       } else {
         return result;
       }
@@ -51,8 +53,9 @@ public class Validation {
         double result = Double.parseDouble(sc.nextLine().trim());
         return result;
       } catch (NumberFormatException e) {
-        System.err.println("Must be input number");
-        System.out.print("Enter again:\n ");
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
+
       }
     }
   }
