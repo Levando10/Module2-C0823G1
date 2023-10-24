@@ -15,7 +15,7 @@ public class ProductManager implements IProductManager{
   static {
     Product product1 = new Product("1", "máy tính", 136000);
     Product product2 = new Product("2", "xe đạp", 37000);
-    Product product3 = new Product("3", "màn hình", 70000);
+    Product product3 = new Product("3", "màn hình", 75300);
     Product product4 = new Product("4", "điện thoại", 19450);
 
     listProduct.add(product1);
