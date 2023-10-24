@@ -1,22 +1,22 @@
 package ss11.thuc_hanh.test_hasmap;
 
 import java.util.HashMap;
+import java.util.Set;
 
 public class HashMaps {
 
   public static void main(String[] args) {
-   HashMap<Integer,String> hashMap = new HashMap<>();
-   hashMap.put(1,"helo");
-    hashMap.put(2,"helo");
-    hashMap.put(3,"xin chao o ngoai");
-    boolean check = hashMap.containsKey(3);
+    HashMap<String, Integer> customers = new HashMap<>();
+    customers.put("John", 30);
+    customers.put("Mike", 28);
+    customers.put("Bill", 32);
+    customers.put("Maria", 27);
+    customers.put("Bill", 32);
+    customers.put("Maria", 27);
 
-
-  if (!check){
-    hashMap.put(3,"xin chao");
-  } else {
-    System.out.println("key ton tai");
-  }
-    System.out.println(hashMap);
+    Set<String> keys = customers.keySet();
+    for (String key : keys) {
+      System.out.println("Key: " + key + ": " + customers.get(key));
+    }
   }
 }
