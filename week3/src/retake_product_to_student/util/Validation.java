@@ -1,4 +1,4 @@
-package ss11.bai_tap.use_araylist_linkedlist.util;
+package retake_product_to_student.util;
 
 import java.util.Scanner;
 
@@ -47,10 +47,22 @@ public class Validation {
     }
   }
 
-  public static Double checkInputDouble() {
+  public static Long checkInputLong() {
     while (true) {
       try {
-        return Double.parseDouble(sc.nextLine().trim());
+        return Long.parseLong(sc.nextLine().trim());
+      } catch (NumberFormatException e) {
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
+
+      }
+    }
+  }
+
+  public static int checkInputInteger() {
+    while (true) {
+      try {
+        return Integer.parseInt(sc.nextLine().trim());
       } catch (NumberFormatException e) {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");

@@ -5,7 +5,8 @@ import ss11.bai_tap.use_araylist_linkedlist.service.ProductService;
 
 public class ProductController implements IProductService {
 
-  IProductService iProductService = new ProductService();
+
+  private ProductService iProductService = new ProductService();
 
 
   @Override

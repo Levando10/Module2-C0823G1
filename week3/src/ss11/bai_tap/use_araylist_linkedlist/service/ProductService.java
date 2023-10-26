@@ -1,11 +1,11 @@
 package ss11.bai_tap.use_araylist_linkedlist.service;
 
-import ss11.bai_tap.use_araylist_linkedlist.reposility.IProductManager;
-import ss11.bai_tap.use_araylist_linkedlist.reposility.ProductManager;
+import ss11.bai_tap.use_araylist_linkedlist.repository.IProductRepository;
+import ss11.bai_tap.use_araylist_linkedlist.repository.ProductRepository;
 
 public class ProductService implements IProductService {
 
-  IProductManager iProductManager = new ProductManager();
+  private IProductRepository iProductManager = new ProductRepository();
 
   @Override
   public void addProduct() {
