@@ -7,8 +7,10 @@ import retake_product_to_student.models.Student;
 import retake_product_to_student.util.Validation;
 
 public class StudentView {
+
   private static Integer id;
   private static Student student;
+  private static  List<Student> students;
 
   public static void main(String[] args) {
     StudentController studentController = new StudentController();
@@ -56,31 +58,36 @@ public class StudentView {
   }
 
   private static void searchStudent(StudentController studentController) {
-    System.out.print("Nhập tên sinh viên cần tìm : ");
-    String name = Validation.checkInputString();
-    student = studentController.findStudent(name);
-    if (student == null){
-      System.out.println("Không tìm thấy!!!");
+    if (students.isEmpty()){
+      System.out.println("Danh sách rỗng!!!");
     } else {
-      System.out.println(student);
+      System.out.print("Nhập tên sinh viên cần tìm : ");
+      String name = Validation.checkInputString();
+      student = studentController.findStudent(name);
+      if (student == null) {
+        System.out.println("Không tìm thấy!!!");
+      } else {
+        System.out.println(student);
+      }
     }
+
   }
 
   private static void editStudent(StudentController studentController) {
     id = inputId();
     student = studentController.checkStudent(id);
-    if (student != null){
+    if (student != null) {
       System.out.println("Bạn có muốn sửa học sinh có  : " + student + " hay không !!!");
       System.out.print("Chọn y hoặc y để đồng ý sửa , N hoặc n để hủy sửa : ");
       Character character = Validation.checkYesNo();
-      if (character.equals('y') || character.equals('Y')){
+      if (character.equals('y') || character.equals('Y')) {
         System.out.print("Nhập tên : ");
         String name = Validation.checkInputString();
         System.out.print("Nhập điểm : ");
         Integer score = Validation.checkInputInteger();
         student = new Student(id, name, score);
         studentController.editStudent(student);
-        System.out.println("Sau khi sửa : "+ student);
+        System.out.println("Sau khi sửa : " + student);
       }
     } else {
       System.out.println("Không tìm thấy Id!!!");
@@ -89,13 +96,18 @@ public class StudentView {
 
   private static void deleteStudent(StudentController studentController) {
     boolean isSuccess;
-    id = inputId();
-    isSuccess = studentController.removeStudent(id);
-    if (isSuccess) {
-      System.out.println(" Thành công!!!");
+    if (students.isEmpty()){
+      System.out.println("Danh sách rỗng!!!");
     } else {
-      System.out.println("Không tìm thấy Id!!!");
+      id = inputId();
+      isSuccess = studentController.removeStudent(id);
+      if (isSuccess) {
+        System.out.println(" Thành công!!!");
+      } else {
+        System.out.println("Không tìm thấy Id!!!");
+      }
     }
+
   }
 
   private static void addStudent(StudentController studentController) {
@@ -106,11 +118,15 @@ public class StudentView {
   }
 
   private static void displayListStudent(StudentController studentController) {
-    List<Student> students;
     students = studentController.getAllStudent();
-    for (Student temp : students) {
-      System.out.println(temp);
+    if (students.isEmpty()) {
+      System.out.println("Danh sách rỗng!!!");
+    } else {
+      for (Student temp : students) {
+        System.out.println(temp);
+      }
     }
+
   }
 
   private static void menuManagementStudent() {
