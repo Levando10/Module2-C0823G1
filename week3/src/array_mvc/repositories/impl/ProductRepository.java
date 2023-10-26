@@ -41,6 +41,7 @@ public class ProductRepository implements IProductRepository {
 
   @Override
   public void deleteById(Integer id) {
+
     for (Product product : products) {
       if (product.getId().equals(id)) {
         products.remove(product);
@@ -66,10 +67,15 @@ public class ProductRepository implements IProductRepository {
 
   @Override
   public void findProduct(String name) {
+    boolean check = false;
     for (Product product : products){
      if (product.getName().toLowerCase().contains(name.toLowerCase())){
        System.out.println(product);
+       check = true;
      }
+    }
+    if (!check){
+      System.out.println("Không tìm thấy sản phẩm!!!");
     }
   }
 

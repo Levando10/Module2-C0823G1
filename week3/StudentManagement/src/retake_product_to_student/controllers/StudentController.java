@@ -15,4 +15,26 @@ public class StudentController {
   public void addStudent(Student student) {
     iStudentService.addStudent(student);
   }
+
+  public boolean removeStudent(Integer id) {
+
+    return iStudentService.removeStudent(id);
+  }
+
+  public Student checkStudent(Integer id) {
+    return iStudentService.checkStudent(id);
+  }
+
+  public Student findStudent(String name) {
+    return iStudentService.findStudent(name);
+  }
+
+  public void sortStudent() {
+    iStudentService.sortStudent();
+  }
+
+
+  public void editStudent(Student student) {
+    iStudentService.editStudent(student);
+  }
 }

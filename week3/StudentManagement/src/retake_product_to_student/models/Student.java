@@ -1,6 +1,6 @@
 package retake_product_to_student.models;
 
-public class Student {
+public class Student implements Comparable<Student>{
 
   private Integer id;
   private String name;
@@ -47,5 +47,10 @@ public class Student {
   @Override
   public String toString() {
     return "Id sinh viên : " + id + " Tên sinh viên : " + name + " Điểm thi : " + score;
+  }
+
+  @Override
+  public int compareTo(Student o) {
+    return (int) (o.getScore() - this.getScore());
   }
 }

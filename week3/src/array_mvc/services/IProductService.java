@@ -9,7 +9,7 @@ public interface IProductService {
 
     void createProduct(Product product);
 
-    Boolean removeProduct(Integer id);
+    Boolean deleteById(Integer id);
 
   Boolean editProduct(int id);
 

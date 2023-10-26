@@ -14,13 +14,8 @@ public class MenuMain {
   public static void main(String[] args) {
     int choice;
     do {
-      System.out.println("--------Menu---------");
-      System.out.println("1. Quản lý khách hàng");
-      System.out.println("2. Quản lý sản phẩm");
-      System.out.println("3. Quản lý nhân viên");
-      System.out.println("4. Quản lý bill");
-      System.out.println("0. Exit");
-      System.out.print("Nhập lựa chọn: ");
+      menuManagement();
+
       choice = Validation.checkInputLimit(0, 4);
       switch (choice) {
         case 1:
@@ -28,6 +23,8 @@ public class MenuMain {
           break;
         case 2:
           menuProduct();
+        case 3:
+          break;
         case 0:
           System.exit(0);
         default:
@@ -36,6 +33,16 @@ public class MenuMain {
     } while (true);
   }
 
+  private static void menuManagement(){
+    System.out.println("--------Menu---------");
+    System.out.println("1. Quản lý khách hàng");
+    System.out.println("2. Quản lý sản phẩm");
+    System.out.println("3. Quản lý nhân viên");
+    System.out.println("4. Quản lý bill");
+    System.out.println("0. Exit");
+    System.out.print("Nhập lựa chọn: ");
+
+  }
   private static void menuCustomer() {
     System.out.println("--------Menu quản lý khách hàng");
   }
@@ -114,7 +121,26 @@ public class MenuMain {
           }
           break;
         case 0:
-          return;
+          System.out.println("------------------------");
+          System.out.println("Trở về Menu chính!!!");
+          do {
+            menuManagement();
+
+            choice = Validation.checkInputLimit(0, 4);
+            switch (choice) {
+              case 1:
+                menuCustomer();
+                break;
+              case 2:
+                menuProduct();
+              case 3:
+                break;
+              case 0:
+                System.exit(0);
+              default:
+                System.out.println("Bạn nhập không đúng lựa chọn");
+            }
+          } while (true);
       }
     } while (true);
 
