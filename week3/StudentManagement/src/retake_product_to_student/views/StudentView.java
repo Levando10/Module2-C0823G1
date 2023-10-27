@@ -20,29 +20,13 @@ public class StudentView {
       menuManagementStudent();
       choice = Validation.checkInputLimit(0, 6);
       switch (choice) {
-        case 1:
-          displayListStudent(studentController);
-          break;
-        case 2:
-          addStudent(studentController);
-
-          break;
-        case 3:
-          deleteStudent(studentController);
-          break;
-        case 4:
-          editStudent(studentController);
-
-          break;
-        case 5:
-          searchStudent(studentController);
-
-          break;
-        case 6:
-          sortStudentIncrease(studentController);
-          break;
-        case 0:
-          System.exit(0);
+        case 1 -> displayListStudent(studentController);
+        case 2 -> addStudent(studentController);
+        case 3 -> deleteStudent(studentController);
+        case 4 -> editStudent(studentController);
+        case 5 -> searchStudent(studentController);
+        case 6 -> sortStudentIncrease(studentController);
+        case 0 -> System.exit(0);
       }
     } while (true);
   }
@@ -89,11 +73,9 @@ public class StudentView {
         System.out.print("Chọn y hoặc y để đồng ý sửa , N hoặc n để hủy sửa : ");
         Character character = Validation.checkYesNo();
         if (character.equals('y') || character.equals('Y')) {
-          System.out.print("Nhập tên : ");
-          String name = Validation.checkInputString();
-          System.out.print("Nhập điểm : ");
-          Integer score = Validation.checkInputInteger();
-          student = new Student(id, name, score);
+          student = new Student();
+          student = inputInformation();
+          student.setId(id);
           studentController.editStudent(student);
           System.out.println("Sau khi sửa : " + student);
         }
