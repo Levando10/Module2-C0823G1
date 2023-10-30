@@ -8,7 +8,7 @@ class CreateFile {
 
     String str = "File Handling in Java using " +
 
-        " FileWriter and FileReader" + " tôi yêu việt nam!!!";
+        " FileWriter and FileReader !!!";
 
     FileWriter fw = new FileWriter("output.txt");
 

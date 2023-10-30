@@ -46,7 +46,7 @@ public class Student implements Comparable<Student>{
 
   @Override
   public String toString() {
-    return "Id sinh viên : " + id + " Tên sinh viên : " + name + " Điểm thi : " + score;
+    return "Id sinh viên : " + id + " ,Tên sinh viên : " + name + " ,Điểm thi : " + score;
   }
 
   @Override
