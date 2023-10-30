@@ -13,31 +13,30 @@ public class TestTriangleException {
     double secondSide = checkInputDouble();
     System.out.print("Nhập cạnh thứ ba : ");
     double thirdSide = checkInputDouble();
-    boolean lessThanZero = firstSide <= 0 || secondSide <= 0 || thirdSide <= 0;
     boolean checkSide = firstSide + secondSide <= thirdSide || secondSide + thirdSide <= firstSide
         || firstSide + thirdSide <= secondSide;
 
     try {
-      if (lessThanZero) {
-        throw new IllegalTriangleException("Cạnh klhông thể nhỏ hoặc bằng 0!!!");
-      } else {
-        if (checkSide) {
-          throw new IllegalTriangleException("2 cạnh Bất kì cộng lại phải lớn hơn cạnh còn lại!!!");
-        }
-
+      if (checkSide) {
+        throw new IllegalTriangleException("2 cạnh Bất kì cộng lại phải lớn hơn cạnh còn lại!!!");
       }
+
 
     } catch (IllegalTriangleException e) {
       System.out.println(e);
     }
 
-
   }
-
   public static Double checkInputDouble() {
     while (true) {
       try {
-        return Double.parseDouble(scanner.nextLine().trim());
+        Double checkSides = Double.parseDouble(scanner.nextLine().trim());
+        if (checkSides <= 0) {
+          System.out.print("Nhập độ dài lớn hơn 0 : ");
+        } else {
+          return checkSides;
+        }
+
       } catch (NumberFormatException e) {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");
