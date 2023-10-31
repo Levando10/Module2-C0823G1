@@ -17,7 +17,7 @@ public class CopyFile {
 
     BufferedWriter bufferedWriter = null;
     BufferedReader bufferedReader = null;
-
+//s
     try {
       String str;
       FileReader fileReader = new FileReader(file);
