@@ -22,16 +22,16 @@ public class ReadProduct {
       fileInputStream = new FileInputStream(PATH);
       objectInputStream = new ObjectInputStream(fileInputStream);
       productList = (List<Product>) objectInputStream.readObject();
-      objectInputStream.close();
+
     }
     catch (EOFException e){
-      System.out.println("Tệp ko chứa dưx liệu");
+      System.out.println("Tệp ko chứa dữ liệu");
     }
     catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
     } finally {
       try {
-
+        objectInputStream.close();
         fileInputStream.close();
       } catch (IOException e) {
         e.printStackTrace();
