@@ -23,4 +23,8 @@ public class ProductController {
   public Product searchProduct(String name) {
     return iProductService.searchProduct(name);
   }
+
+  public Boolean findId(Integer id) {
+    return iProductService.findId(id);
+  }
 }

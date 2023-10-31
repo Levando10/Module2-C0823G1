@@ -36,4 +36,17 @@ public class ProductRepository implements IProductRepository {
     }
     return null;
   }
+
+  @Override
+  public Boolean findId(Integer id) {
+
+    products = ReadProduct.readProductList();
+    for (Product temp : products){
+      if (temp.getId().equals(id)){
+
+        return true;
+      }
+    }
+    return false;
+  }
 }

@@ -2,9 +2,9 @@ package utils.read_write_file;
 
 import java.io.EOFException;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.ObjectInputStream;
+import java.util.ArrayList;
 import java.util.List;
 import models.Product;
 
@@ -18,34 +18,28 @@ public class ReadProduct {
     ObjectInputStream objectInputStream = null;
 
     try {
+
       fileInputStream = new FileInputStream(PATH);
       objectInputStream = new ObjectInputStream(fileInputStream);
       productList = (List<Product>) objectInputStream.readObject();
-      if (productList.isEmpty()){
-        return null;
-      }
+      objectInputStream.close();
     }
     catch (EOFException e){
-      //
+      System.out.println("Tệp ko chứa dưx liệu");
     }
-    catch (FileNotFoundException e) {
+    catch (IOException | ClassNotFoundException e) {
       e.printStackTrace();
-    } catch (IOException e) {
-      e.printStackTrace();
-    } catch (ClassNotFoundException e) {
-      e.printStackTrace();
-    }
-    finally {
+    } finally {
       try {
-        objectInputStream.close();
+
         fileInputStream.close();
       } catch (IOException e) {
         e.printStackTrace();
       }
 
     }
-
-    return productList;
+    System.out.println();
+ return productList == null? new ArrayList<>(): productList;
   }
 
 }

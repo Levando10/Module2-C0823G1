@@ -13,4 +13,6 @@ public interface IProductService {
 
 
   Product searchProduct(String name);
+
+  Boolean findId(Integer id);
 }

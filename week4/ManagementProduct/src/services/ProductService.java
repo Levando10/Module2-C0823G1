@@ -25,5 +25,10 @@ public class ProductService implements IProductService {
     return iProductRepository.searchProduct(name);
   }
 
+  @Override
+  public Boolean findId(Integer id) {
+    return iProductRepository.findId(id);
+  }
+
 
 }

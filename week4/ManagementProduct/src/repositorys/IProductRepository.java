@@ -10,4 +10,6 @@ public interface IProductRepository {
   void addProduct(Product product);
 
   Product searchProduct(String name);
+
+  Boolean findId(Integer id);
 }

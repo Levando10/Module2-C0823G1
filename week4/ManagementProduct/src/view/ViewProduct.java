@@ -16,49 +16,19 @@ public class ViewProduct {
     Integer id;
     do {
       System.out.println("\n-------------------------------------------------------------");
-      System.out.println("Vui lòng chọn chức năng:\n" +
-          "1. Thêm sản phẩm \n" +
-          "2. Hiển thị thông tin sản phẩm \n" +
-          "3. Tìm kiếm sản phẩm theo tên \n" +
-          "0. Thoát. \n");
+      System.out.println(
+          "Vui lòng chọn chức năng:\n1. Thêm sản phẩm \n2. Hiển thị thông tin sản phẩm \n3. Tìm kiếm sản phẩm theo tên \n0. Thoát. \n");
       System.out.print("Nhập chức năng : ");
       int choice = Validation.checkInputLimit(0, 6);
       switch (choice) {
         case 1:
-
-           id = inputId();
-          product = inputInformation();
-          product.setId(id);
-          productController.addProduct(product);
-          System.out.println("thêm thành công!!!");
+          addProduct(productController);
           break;
         case 2:
-          productList = productController.getAllProduct();
-          if (productList.isEmpty()) {
-            System.out.println("Danh Sách rỗng!!!");
-          } else {
-            for (Product temp : productList) {
-              System.out.println(temp);
-            }
-          }
+          displayListProduct(productController);
           break;
         case 3:
-          productList = productController.getAllProduct();
-          if (productList.isEmpty()) {
-            System.out.println("Danh Sách rỗng!!!");
-          } else {
-            System.out.print("Nhập sản phẩm cần tìm : ");
-             String name = Validation.checkInputString();
-             product = productController.searchProduct(name);
-             if (product == null){
-               System.out.println("Không tìm thấy!!!");
-             } else {
-               System.out.println(product);
-             }
-
-
-          }
-
+          searchById(productController);
 
           break;
         case 0:
@@ -68,9 +38,58 @@ public class ViewProduct {
     } while (true);
   }
 
+  private static void searchById(ProductController productController) {
+    Product product;
+    List<Product> productList;
+    productList = productController.getAllProduct();
+    if (productList.isEmpty()) {
+      System.out.println("Danh Sách rỗng!!!");
+    } else {
+      System.out.print("Nhập sản phẩm cần tìm : ");
+      String name = Validation.checkInputString();
+      product = productController.searchProduct(name);
+      if (product == null) {
+        System.out.println("Không tìm thấy!!!");
+      } else {
+        System.out.println(product);
+      }
+
+    }
+  }
+
+  private static void displayListProduct(ProductController productController) {
+    List<Product> productList;
+    productList = productController.getAllProduct();
+    if (productList.isEmpty()) {
+      System.out.println("Danh Sách rỗng!!!");
+    } else {
+      for (Product temp : productList) {
+        System.out.println(temp);
+      }
+    }
+  }
+
+  private static void addProduct(ProductController productController) {
+    Product product;
+    Integer id;
+    id = inputId();
+    Boolean checkId = productController.findId(id);
+    while (checkId == true) {
+      System.out.println("Vui lòng không nhập id trùng !!!");
+      id = inputId();
+      checkId = productController.findId(id);
+    }
+
+    product = inputInformation();
+    product.setId(id);
+    productController.addProduct(product);
+    System.out.println("thêm thành công!!!");
+  }
+
 
   private static Integer inputId() {
     System.out.print("Nhập id : ");
+
     return Validation.checkInputInteger();
   }
 
