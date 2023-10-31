@@ -3,6 +3,7 @@ package retake_product_to_student.views;
 
 import java.util.List;
 import retake_product_to_student.controllers.StudentController;
+import retake_product_to_student.data.ReadStudent;
 import retake_product_to_student.models.Student;
 import retake_product_to_student.util.Validation;
 
@@ -88,7 +89,7 @@ public class StudentView {
 
   private static void deleteStudent(StudentController studentController) {
     boolean isSuccess;
-    if (students.isEmpty()) {
+    if (ReadStudent.readFile().isEmpty()) {
       System.out.println("Danh sách rỗng!!!");
     } else {
       id = inputId();

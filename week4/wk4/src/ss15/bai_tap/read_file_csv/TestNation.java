@@ -9,17 +9,18 @@ import java.util.ArrayList;
 public class TestNation {
 
 
-  public static void main(String[] args) {
+  public static void main(String[] args) throws IOException {
     ArrayList<String[]> nations = new ArrayList<>();
     String line;
+    BufferedReader bufferedReader = null;
     try {
       FileReader fileReader = new FileReader("wk4/src/ss15/bai_tap/read_file_csv/nation.csv");
-      BufferedReader bufferedReader = new BufferedReader(fileReader);
+       bufferedReader = new BufferedReader(fileReader);
       while ((line = bufferedReader.readLine()) != null) {
         String[] splitData = line.split("\t");
         nations.add(splitData);
       }
-      bufferedReader.close();
+
 
       for (String[] nationData : nations) {
         System.out.println(
@@ -32,6 +33,8 @@ public class TestNation {
       throw new RuntimeException(e);
     } catch (IOException e) {
       throw new RuntimeException(e);
+    } finally {
+      bufferedReader.close();
     }
 
 

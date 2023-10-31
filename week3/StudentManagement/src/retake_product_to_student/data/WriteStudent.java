@@ -26,7 +26,6 @@ public class WriteStudent {
               student.getId() + "," + student.getName() + "," + student.getScore());
           bufferedWriter.newLine();
         }
-        System.out.println(students);
 
         bufferedWriter.flush();
 

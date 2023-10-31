@@ -15,8 +15,28 @@ public class ReadStudent {
 
   public static List<Student> readFile() {
     List<Student> students = new ArrayList<>();
+    BufferedReader bufferedReader = null;
 
-    return students;
+    try {
+      Student student;
+      bufferedReader = new BufferedReader(new FileReader(PATH));
+      String temp;
+      String[] tempString;
+
+      while ((temp = bufferedReader.readLine()) != null) {
+        tempString = temp.split(",");
+        student = new Student(Integer.parseInt(tempString[0]),
+            tempString[1], Integer.parseInt(tempString[2]));
+        students.add(student);
+
+      }
+      return students;
+    } catch (FileNotFoundException e) {
+      throw new RuntimeException(e);
+    } catch (IOException e) {
+      throw new RuntimeException(e);
+    }
+
   }
-  
+
 }

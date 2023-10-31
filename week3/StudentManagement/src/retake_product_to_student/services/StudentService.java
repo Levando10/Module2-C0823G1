@@ -1,6 +1,7 @@
 package retake_product_to_student.services;
 
 import java.util.List;
+import retake_product_to_student.data.ReadStudent;
 import retake_product_to_student.models.Student;
 import retake_product_to_student.repositories.IStudentRepository;
 import retake_product_to_student.repositories.StudentRepository;
@@ -27,10 +28,12 @@ public class StudentService implements IStudentService {
     if (student == null) {
       return false;
     } else {
+      System.out.println(student);
       System.out.print("Bạn có muốn xóa hay không (y hoặc Y để xóa , n hoặc N để hủy xóa) : ");
       Character character = Validation.checkYesNo();
       if (character.equals('y') || character.equals('Y')) {
         iStudentRepository.removeStudent(id);
+
         return true;
       } else {
         return true;
