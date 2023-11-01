@@ -21,7 +21,7 @@ public class ProductService implements IProductService {
   }
 
   @Override
-  public Product searchProduct(String name) {
+  public List<Product> searchProduct(String name) {
     return iProductRepository.searchProduct(name);
   }
 

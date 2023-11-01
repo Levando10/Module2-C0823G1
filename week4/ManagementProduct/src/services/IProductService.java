@@ -12,7 +12,7 @@ public interface IProductService {
   void addProduct(Product product);
 
 
-  Product searchProduct(String name);
+  List<Product> searchProduct(String name);
 
   Boolean findId(Integer id);
 }

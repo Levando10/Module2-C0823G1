@@ -13,10 +13,7 @@ public class ProductRepository implements IProductRepository {
 
   @Override
   public List<Product> getAllProduct() {
-    products = ReadProduct.readProductList();
-    WriteProduct.writeProductObject(products);
     return ReadProduct.readProductList();
-
   }
 
   @Override
@@ -26,15 +23,16 @@ public class ProductRepository implements IProductRepository {
   }
 
   @Override
-  public Product searchProduct(String name) {
+  public List<Product> searchProduct(String name) {
     products = ReadProduct.readProductList();
+    List<Product> listSearch = new ArrayList<>();
     for (Product temp : products){
       if (temp.getName().toLowerCase().contains(name.toLowerCase())){
-        return temp;
+        listSearch.add(temp);
 
       }
     }
-    return null;
+    return listSearch;
   }
 
   @Override

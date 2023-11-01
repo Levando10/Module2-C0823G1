@@ -42,16 +42,19 @@ public class ViewProduct {
     Product product;
     List<Product> productList;
     productList = productController.getAllProduct();
+    List<Product> searchList;
     if (productList.isEmpty()) {
       System.out.println("Danh Sách rỗng!!!");
     } else {
       System.out.print("Nhập sản phẩm cần tìm : ");
       String name = Validation.checkInputString();
-      product = productController.searchProduct(name);
-      if (product == null) {
+      searchList = productController.searchProduct(name);
+      if (searchList == null) {
         System.out.println("Không tìm thấy!!!");
       } else {
-        System.out.println(product);
+        for (Product temp : searchList){
+          System.out.println(temp);
+        }
       }
 
     }

@@ -33,10 +33,10 @@ public class FuramaController {
             case 2:
               Employee employee;
               String idEmployee = inputIdEmployee();
+              System.out.print("Nhập tên nhân viên : ");
               String name = Validation.checkInputString();
-              String gender;
-
-
+              String gender = inputGender();
+              System.out.println(idEmployee + name + gender);
 
               break;
             case 3:
@@ -137,12 +137,31 @@ public class FuramaController {
       }
     } while (true);
   }
+
   private static String inputIdEmployee() {
     System.out.print("Nhập id : ");
     return Validation.checkInputString();
   }
+
   private static String inputGender() {
-    System.out.print("Nhập id : ");
-    return Validation.checkInputString();
+    System.out.println(" Giới tính");
+    System.out.println("1. Nam");
+    System.out.println("2. Nữ");
+    System.out.println("3. Khác");
+    System.out.print("Nhập giới tính : ");
+    int chooseGender = Validation.checkInputLimit(1, 3);
+    String gender = "";
+    switch (chooseGender) {
+      case 1:
+        gender = "Nam";
+        break;
+      case 2:
+        gender = "Nữ";
+        break;
+      case 3:
+        gender = "Khác";
+        break;
+    }
+    return gender;
   }
 }

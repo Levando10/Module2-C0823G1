@@ -20,7 +20,7 @@ public class ProductController {
   }
 
 
-  public Product searchProduct(String name) {
+  public List<Product> searchProduct(String name) {
     return iProductService.searchProduct(name);
   }
 
