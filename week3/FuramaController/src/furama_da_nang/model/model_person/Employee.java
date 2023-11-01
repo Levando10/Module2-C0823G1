@@ -11,12 +11,15 @@ private Double salary;
   public Employee() {
   }
 
-  public Employee(String name, String birthDay, String gender, String identityNumber,
-      String phoneNumber, String email, String position, String levelEducation, Double salary) {
+  public Employee(String idEmployee, String name, String gender, String identityNumber,
+      String phoneNumber, String birthDay, String email, String position, String levelEducation,
+      Double salary) {
     super(name, birthDay, gender, identityNumber, phoneNumber, email);
+    this.idEmployee = idEmployee;
     this.position = position;
     this.levelEducation = levelEducation;
     this.salary = salary;
+
   }
 
   public String getIdEmployee() {
@@ -53,11 +56,12 @@ private Double salary;
 
   @Override
   public String toString() {
-    return "Employee{" +
-        "idEmployee='" + idEmployee + '\'' +
-        ", position=" + position +
-        ", levelEducation=" + levelEducation +
-        ", salary=" + salary +
-        "} " + super.toString();
+    return
+        " Id Nhân viên  : '" + idEmployee + '\'' +
+        super.toString()+
+        ", Chức vụ  : " + position +
+        ", , trình độ học vấn :" + levelEducation +
+        ", , lương : " + salary +
+        " " ;
   }
 }

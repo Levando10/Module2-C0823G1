@@ -58,6 +58,17 @@ public class Validation {
       }
     }
   }
+  public static Double checkInputDouble() {
+    while (true) {
+      try {
+        return Double.parseDouble(sc.nextLine().trim());
+      } catch (NumberFormatException e) {
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
+
+      }
+    }
+  }
 
   public static int checkInputInteger() {
     while (true) {

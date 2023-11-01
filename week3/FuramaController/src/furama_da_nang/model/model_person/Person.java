@@ -73,13 +73,12 @@ public  abstract class Person {
 
   @Override
   public String toString() {
-    return "Person{" +
-        "name='" + name + '\'' +
-        ", birthDay='" + birthDay + '\'' +
-        ", gender=" + gender +
-        ", identityNumber='" + identityNumber + '\'' +
-        ", phoneNumber='" + phoneNumber + '\'' +
-        ", email='" + email + '\'' +
-        '}';
+    return
+        "Tên nhân viên  : '" + name + '\'' +
+        ", sinh nhật : '" + birthDay + '\'' +
+        ", giới tính : " + gender +
+        ", CMND : '" + identityNumber + '\'' +
+        ", Số điện thaoị  : '" + phoneNumber + '\'' +
+        ", Email : '" + email + '\'' ;
   }
 }
