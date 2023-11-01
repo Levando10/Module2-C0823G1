@@ -66,9 +66,14 @@ public class ViewProduct {
     if (productList.isEmpty()) {
       System.out.println("Danh Sách rỗng!!!");
     } else {
-      for (Product temp : productList) {
-        System.out.println(temp);
+      if (productList != null){
+        for (Product temp : productList) {
+          System.out.println(temp);
+        }
+      } else {
+        System.out.println("Không tìm thấy");
       }
+
     }
   }
 

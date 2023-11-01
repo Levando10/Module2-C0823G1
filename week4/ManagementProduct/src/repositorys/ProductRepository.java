@@ -26,21 +26,23 @@ public class ProductRepository implements IProductRepository {
   public List<Product> searchProduct(String name) {
     products = ReadProduct.readProductList();
     List<Product> listSearch = new ArrayList<>();
-    for (Product temp : products){
-      if (temp.getName().toLowerCase().contains(name.toLowerCase())){
+    boolean check = false;
+    for (Product temp : products) {
+      if (temp.getName().toLowerCase().contains(name.toLowerCase())) {
         listSearch.add(temp);
-
+        check = true;
       }
     }
-    return listSearch;
+
+    return check != false ? listSearch : null;
   }
 
   @Override
   public Boolean findId(Integer id) {
 
     products = ReadProduct.readProductList();
-    for (Product temp : products){
-      if (temp.getId().equals(id)){
+    for (Product temp : products) {
+      if (temp.getId().equals(id)) {
 
         return true;
       }
