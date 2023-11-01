@@ -1,11 +1,11 @@
 package furama_da_nang.model.model_person;
 
-import furama_da_nang.model.enums.Gender;
+
 
 public  abstract class Person {
   private String name;
   private String birthDay;
-  private Gender gender;
+  private String gender;
   private String identityNumber;
   private String  phoneNumber;
   private String email;
@@ -13,7 +13,7 @@ public  abstract class Person {
   public Person() {
   }
 
-  public Person(String name, String birthDay, Gender gender, String identityNumber,
+  public Person(String name, String birthDay, String gender, String identityNumber,
       String phoneNumber, String email) {
     this.name = name;
     this.birthDay = birthDay;
@@ -39,11 +39,11 @@ public  abstract class Person {
     this.birthDay = birthDay;
   }
 
-  public Gender getGender() {
+  public String getGender() {
     return gender;
   }
 
-  public void setGender(Gender gender) {
+  public void setGender(String gender) {
     this.gender = gender;
   }
 

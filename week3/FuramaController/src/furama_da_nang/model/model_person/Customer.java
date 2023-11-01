@@ -1,19 +1,17 @@
 package furama_da_nang.model.model_person;
 
-import furama_da_nang.model.enums.Gender;
-import furama_da_nang.model.enums.TypeCustomer;
+public class Customer extends Person {
 
-public class Customer extends Person{
-private String idCustomer;
-private TypeCustomer typeCustomer;
-private String address;
+  private String idCustomer;
+  private String typeCustomer;
+  private String address;
 
   public Customer() {
   }
 
-  public Customer(String name, String birthDay, Gender gender,
+  public Customer(String name, String birthDay, String gender,
       String identityNumber, String phoneNumber, String email, String idCustomer,
-      TypeCustomer typeCustomer, String address) {
+      String typeCustomer, String address) {
     super(name, birthDay, gender, identityNumber, phoneNumber, email);
     this.idCustomer = idCustomer;
     this.typeCustomer = typeCustomer;
@@ -28,11 +26,11 @@ private String address;
     this.idCustomer = idCustomer;
   }
 
-  public TypeCustomer getTypeCustomer() {
+  public String getTypeCustomer() {
     return typeCustomer;
   }
 
-  public void setTypeCustomer(TypeCustomer typeCustomer) {
+  public void setTypeCustomer(String typeCustomer) {
     this.typeCustomer = typeCustomer;
   }
 

@@ -1,23 +1,19 @@
 package furama_da_nang.model.model_person;
 
-import furama_da_nang.model.enums.Gender;
-import furama_da_nang.model.enums.LevelEducation;
-import furama_da_nang.model.enums.Position;
+
 
 public class Employee extends Person{
 private String idEmployee;
-private Position position;
-private LevelEducation levelEducation;
+private String position;
+private String levelEducation;
 private Double salary;
 
   public Employee() {
   }
 
-  public Employee(String name, String birthDay, Gender gender,
-      String identityNumber, String phoneNumber, String email, String idEmployee, Position position,
-      LevelEducation levelEducation, Double salary) {
+  public Employee(String name, String birthDay, String gender, String identityNumber,
+      String phoneNumber, String email, String position, String levelEducation, Double salary) {
     super(name, birthDay, gender, identityNumber, phoneNumber, email);
-    this.idEmployee = idEmployee;
     this.position = position;
     this.levelEducation = levelEducation;
     this.salary = salary;
@@ -31,19 +27,19 @@ private Double salary;
     this.idEmployee = idEmployee;
   }
 
-  public Position getPosition() {
+  public String getPosition() {
     return position;
   }
 
-  public void setPosition(Position position) {
+  public void setPosition(String position) {
     this.position = position;
   }
 
-  public LevelEducation getLevelEducation() {
+  public String getLevelEducation() {
     return levelEducation;
   }
 
-  public void setLevelEducation(LevelEducation levelEducation) {
+  public void setLevelEducation(String levelEducation) {
     this.levelEducation = levelEducation;
   }
 

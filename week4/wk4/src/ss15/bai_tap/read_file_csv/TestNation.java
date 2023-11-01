@@ -9,7 +9,7 @@ import java.util.ArrayList;
 public class TestNation {
 
 
-  public static void main(String[] args) throws IOException {
+  public static void main(String[] args)  {
     ArrayList<String[]> nations = new ArrayList<>();
     String line;
     BufferedReader bufferedReader = null;
@@ -34,7 +34,11 @@ public class TestNation {
     } catch (IOException e) {
       throw new RuntimeException(e);
     } finally {
-      bufferedReader.close();
+      try {
+        bufferedReader.close();
+      } catch (IOException e) {
+        throw new RuntimeException(e);
+      }
     }
 
 
