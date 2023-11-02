@@ -1,8 +1,11 @@
 package furama_da_nang.view;
 
+import furama_da_nang.controller.CustomerController;
 import furama_da_nang.controller.EmployeeController;
+import furama_da_nang.model.model_person.Customer;
 import furama_da_nang.model.model_person.Employee;
 import furama_da_nang.utils.Validation;
+import furama_da_nang.utils.customer.ReadFileCustomer;
 import java.util.List;
 
 public class FuramaController {
@@ -10,9 +13,8 @@ public class FuramaController {
 
   public static void main(String[] args) {
     EmployeeController employeeController = new EmployeeController();
+    CustomerController customerController = new CustomerController();
 
-    List<Employee> employees;
-    Employee employee;
     int choice;
 
     do {
@@ -24,26 +26,7 @@ public class FuramaController {
           break;
 
         case 2:
-          System.out.println("---------------Customers Management-------------");
-          System.out.println(
-              "1.Display list customers\n" + "2 Add new customer\n" + "3 Edit customer\n"
-                  + "4 Delete customer\n" + "5 Search by name customer\n" + "6 Return main menu");
-          System.out.print("Nhập chức năng : ");
-          choice = Validation.checkInputLimit(1, 6);
-          switch (choice) {
-            case 1:
-              break;
-            case 2:
-              break;
-            case 3:
-              break;
-            case 4:
-              break;
-            case 5:
-              break;
-            case 6:
-              break;
-          }
+          menuCustomers(customerController);
           break;
         case 3:
           System.out.println("---------------Facility Management-------------");
@@ -110,6 +93,77 @@ public class FuramaController {
 
       }
     } while (choice != 6);
+  }
+
+  private static void menuCustomers(CustomerController customerController) {
+    List<Customer> customers;
+    String idCustomer;
+    int customerChoice;
+    Boolean checkYesNo;
+    Customer customer;
+    do {
+      System.out.println("---------------Customers Management-------------");
+      System.out.println(
+          "1.Display list customers\n" + "2 Add new customer\n" + "3 Edit customer\n"
+              + "4 Delete customer\n" + "5 Search by name customer\n" + "6 Return main menu");
+      System.out.print("Nhập chức năng : ");
+      customerChoice = Validation.checkInputLimit(1, 6);
+      switch (customerChoice) {
+        case 1:
+          customers = customerController.getListCustomer();
+          if (customers.isEmpty()) {
+            System.out.println("Danh sách rỗng");
+          } else {
+            for (Customer temp : customers) {
+              System.out.println(temp);
+            }
+          }
+          break;
+        case 2:
+          idCustomer = inputIdCustomer();
+           customer = inputInformationCustomer();
+          customer.setIdCustomer(idCustomer);
+          customerController.addCustomer(customer);
+          break;
+        case 3:
+          customers = customerController.getListCustomer();
+          if (customers.isEmpty()){
+            System.out.println("Danh sách rỗng!!!");
+          } else {
+            idCustomer = inputIdCustomer();
+           customer = customerController.checkIdEmployee(idCustomer);
+           if (customer != null){
+             System.out.println(customer);
+             System.out.print("Bạn có muốn sửa thông tin khách hàng : ");
+             checkYesNo = Validation.checkYesNo();
+             if (checkYesNo){
+              customer = inputInformationCustomer();
+              customer.setIdCustomer(idCustomer);
+              customerController.editCustomer(customer);
+               System.out.println("Sửa thành công");
+
+             }
+           } else {
+             System.out.println("Không tìm thấy!!!");
+           }
+
+
+
+
+          }
+
+
+
+          break;
+        case 4:
+          break;
+        case 5:
+          break;
+        case 6:
+          break;
+      }
+    } while (customerChoice != 6);
+
   }
 
   private static void menuEmployee(EmployeeController employeeController) {
@@ -196,17 +250,23 @@ public class FuramaController {
           menuEmployee(employeeController);
           break;
         case 5:
-         employees = employeeController.getListEmployee();
-         if (employees.isEmpty()){
-           System.out.println("Danh sách rỗng!!!");
-         } else {
-           System.out.println("Nhập tên nhân viên cần tìm : ");
-           String nameSearch = Validation.checkInputString();
+          employees = employeeController.getListEmployee();
+          if (employees.isEmpty()) {
+            System.out.println("Danh sách rỗng!!!");
+          } else {
+            System.out.print("Nhập tên nhân viên cần tìm : ");
+            String nameSearch = Validation.checkInputString();
+            List<Employee> listSearch = employeeController.searchEmployee(nameSearch);
+            if (listSearch != null) {
+              for (Employee emSearch : listSearch) {
+                System.out.println(emSearch);
+              }
+            } else {
+              System.out.println("Không tìm thấy tên nhân viên!!!");
+            }
 
-         }
 
-
-
+          }
 
           menuEmployee(employeeController);
           break;
@@ -229,6 +289,11 @@ public class FuramaController {
     return Validation.checkIdEmployee();
   }
 
+  private static String inputIdCustomer() {
+    System.out.print("Nhập id : ");
+    return Validation.checkIdCustomer();
+  }
+
   private static Employee inputInformationEmployee() {
     System.out.print("Nhập tên nhân viên : ");
     String name = Validation.checkInputString();
@@ -247,6 +312,24 @@ public class FuramaController {
     String levelEducation = inputLevelEducation();
     return new Employee(name, gender, idNumber, phoneNumber, birth, email, position, levelEducation,
         salary);
+  }
+
+  private static Customer inputInformationCustomer() {
+    System.out.print("Nhập tên khách hàng : ");
+    String name = Validation.checkInputString();
+    String gender = inputGender();
+    System.out.print("Nhập ngày sinh : ");
+    String birth = Validation.checkInputString();
+    System.out.print("Nhập căn cước : ");
+    String idNumber = Validation.checkInputString();
+    System.out.print("Nhập số điện thoại khách hàng : ");
+    String phoneNumber = Validation.checkNumberPhone();
+    System.out.print("Nhập email : ");
+    String email = Validation.checkEmail();
+    String typeCustomer = inputTypeCustomer();
+    System.out.print("Nhập địa chỉ : ");
+    String address = Validation.checkInputString();
+    return new Customer(name,gender,birth,idNumber,phoneNumber,email,typeCustomer,address);
   }
 
   private static String inputGender() {
@@ -295,7 +378,7 @@ public class FuramaController {
     System.out.println("3. Đại học");
     System.out.println("4. Sau đại học");
     System.out.print("Nhập trình độ : ");
-    int choosePosition = Validation.checkInputLimit(1, 6);
+    int choosePosition = Validation.checkInputLimit(1, 4);
     String position = switch (choosePosition) {
       case 1 -> "Trung cấp";
       case 2 -> "Cao đẳng";
@@ -305,5 +388,24 @@ public class FuramaController {
     };
 
     return position;
+  }
+
+  private static String inputTypeCustomer() {
+    System.out.println(" Loại khách hàng");
+    System.out.println("1. Diamond");
+    System.out.println("2. Platinum");
+    System.out.println("3. Gold");
+    System.out.println("4. Silver");
+    System.out.println("5. Member");
+    int chooseTypeCustomer = Validation.checkInputLimit(1, 5);
+    String typeCustomer = switch (chooseTypeCustomer) {
+      case 1 -> "Diamond";
+      case 2 -> "Platinum";
+      case 3 -> "Gold";
+      case 4 -> "Silver";
+      case 5 -> "Member";
+      default -> "";
+    };
+    return typeCustomer;
   }
 }

@@ -16,4 +16,6 @@ public interface IEmployeeRepository  extends Repository{
   void deleteEmployee(String idEmployee);
 
   Boolean checkIdOnly(String idEmployee);
+
+  List<Employee> searchEmployee(String nameSearch);
 }

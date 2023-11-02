@@ -74,7 +74,7 @@ public  abstract class Person {
   @Override
   public String toString() {
     return
-        ", Tên nhân viên: '" + name + '\'' +
+        ", Tên: '" + name + '\'' +
         ", sinh nhật: '" + birthDay + '\'' +
         ", giới tính: " + gender +
         ", CMND: '" + identityNumber + '\'' +

@@ -29,7 +29,7 @@ public class ReadFileEmployee {
       employees.add(employee);
     }
 
-    return employees == null? new ArrayList<>():employees;
+    return employees;
 
 
     } catch (FileNotFoundException e) {

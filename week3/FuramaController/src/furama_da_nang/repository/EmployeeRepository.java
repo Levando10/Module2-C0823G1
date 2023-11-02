@@ -3,6 +3,7 @@ package furama_da_nang.repository;
 import furama_da_nang.model.model_person.Employee;
 import furama_da_nang.utils.employee.ReadFileEmployee;
 import furama_da_nang.utils.employee.WriteFileEmployee;
+import java.util.ArrayList;
 import java.util.List;
 
 public class EmployeeRepository implements IEmployeeRepository {
@@ -74,6 +75,19 @@ public class EmployeeRepository implements IEmployeeRepository {
       }
     }
     return false;
+  }
+
+  @Override
+  public List<Employee> searchEmployee(String nameSearch) {
+    List<Employee> searchEmployees = new ArrayList<>();
+    boolean checkSearch = false;
+    for (Employee tempSearch : employees){
+      if (tempSearch.getName().toLowerCase().contains(nameSearch.toLowerCase())){
+        searchEmployees.add(tempSearch);
+        checkSearch = true;
+      }
+    }
+    return checkSearch ?searchEmployees:null;
   }
 
 

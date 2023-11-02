@@ -26,7 +26,6 @@ private Double salary;
       String phoneNumber, String birthDay, String email, String position, String levelEducation,
       Double salary) {
     super(name, birthDay, gender, identityNumber, phoneNumber, email);
-    this.idEmployee = idEmployee;
     this.position = position;
     this.levelEducation = levelEducation;
     this.salary = salary;

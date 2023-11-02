@@ -18,6 +18,13 @@ public class Customer extends Person {
     this.address = address;
   }
 
+  public Customer(String name, String birthDay, String gender, String identityNumber,
+      String phoneNumber, String email, String typeCustomer, String address) {
+    super(name, birthDay, gender, identityNumber, phoneNumber, email);
+    this.typeCustomer = typeCustomer;
+    this.address = address;
+  }
+
   public String getIdCustomer() {
     return idCustomer;
   }
@@ -40,5 +47,14 @@ public class Customer extends Person {
 
   public void setAddress(String address) {
     this.address = address;
+  }
+
+  @Override
+  public String toString() {
+    return " Id  khách hàng: " + idCustomer  +
+            super.toString()+
+            ", Loại khách hàng: " + typeCustomer +
+            ", Địa chỉ: " + address +
+            " " ;
   }
 }

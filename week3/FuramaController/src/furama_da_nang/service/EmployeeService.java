@@ -6,7 +6,7 @@ import furama_da_nang.repository.IEmployeeRepository;
 import java.util.List;
 
 public class EmployeeService implements IEmployeeService{
-IEmployeeRepository iEmployeeRepository = new EmployeeRepository();
+private IEmployeeRepository iEmployeeRepository = new EmployeeRepository();
 
   @Override
   public void addEmployee(Employee employee) {
@@ -37,5 +37,10 @@ IEmployeeRepository iEmployeeRepository = new EmployeeRepository();
   @Override
   public Boolean checkIdOnly(String idEmployee) {
     return iEmployeeRepository.checkIdOnly(idEmployee);
+  }
+
+  @Override
+  public List<Employee> searchEmployee(String nameSearch) {
+    return iEmployeeRepository.searchEmployee(nameSearch);
   }
 }

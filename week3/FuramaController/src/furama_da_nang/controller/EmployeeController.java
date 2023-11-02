@@ -32,4 +32,8 @@ public class EmployeeController {
  public Boolean checkIdOnly(String idEmployee) {
   return iEmployeeService.checkIdOnly(idEmployee);
  }
+
+  public List<Employee> searchEmployee(String nameSearch) {
+  return iEmployeeService.searchEmployee(nameSearch);
+  }
 }

@@ -13,7 +13,7 @@ public class WriteFileEmployee {
 
   public static void writeListEmployee(List<Employee> employees) {
     File file = new File(PATH);
-    FileWriter fileWriter = null;
+    FileWriter fileWriter;
     BufferedWriter bufferedWriter = null;
 
     try {
@@ -33,7 +33,9 @@ public class WriteFileEmployee {
       throw new RuntimeException(e);
     } finally {
       try {
-        bufferedWriter.close();
+        if (bufferedWriter != null){
+          bufferedWriter.close();
+        }
       } catch (IOException e){
         e.printStackTrace();
       }
