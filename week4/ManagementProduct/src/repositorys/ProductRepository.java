@@ -8,7 +8,7 @@ import utils.read_write_file.WriteProduct;
 
 public class ProductRepository implements IProductRepository {
 
-  public static List<Product> products = new ArrayList<>();
+  private static List<Product> products = new ArrayList<>();
 
 
   @Override

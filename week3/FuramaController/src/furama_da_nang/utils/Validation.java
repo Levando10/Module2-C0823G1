@@ -35,11 +35,16 @@ public class Validation {
   }
 
 
-  public static char checkYesNo(){
+  public static Boolean checkYesNo(){
     while (true) {
       String result = checkInputString();
       if (result.matches(YES_NO_VALID)) {
-        return result.charAt(0);
+        if (result.charAt(0) == 'y' || result.charAt(0) == 'Y'){
+          return true;
+        } else {
+          return false;
+        }
+//        return result.charAt(0);
       } else {
         System.out.println("Please just input Y(y) or N(n)");
         System.out.print("Enter again: ");
@@ -78,6 +83,49 @@ public class Validation {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");
 
+      }
+    }
+  }
+//  public static String checkPhoneNumber(){
+//    while (true){
+//
+//    }
+//  }
+  public static String checkNumberPhone(){
+    while (true){
+      try {
+        String input = sc.nextLine();
+        if (!input.matches("^0\\d{9}$")){
+          throw new NumberFormatException();
+        }
+        return input;
+      }catch (NumberFormatException e){
+        System.err.println("Nhập số điện thoại bắt đầu từ 0 và đủ 10 số !!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+  }
+  public static String checkEmail(){
+    while (true){
+      String input = sc.nextLine();
+      if (input.matches("^[a-zA-Z0-9]+[a-zA-Z0-9]*@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)$")){
+        return input;
+      } else {
+        System.err.println("Bạn nên nhập email theo định dạng (abc@domain.com)");
+        System.err.print("Nhập lại : ");
+      }
+
+    }
+
+  }
+  public static String checkIdEmployee(){
+    while (true){
+      String input = sc.nextLine();
+      if (input.matches("NV-\\d{4}$")){
+        return input;
+      } else {
+        System.err.println("Bạn nên nhập id theo định dạng (NV-YYYY) Y số từ  0-9!!!");
+        System.err.print("Nhập lại : ");
       }
     }
   }

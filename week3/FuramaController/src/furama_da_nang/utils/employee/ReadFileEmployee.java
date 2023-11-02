@@ -2,7 +2,6 @@ package furama_da_nang.utils.employee;
 
 import furama_da_nang.model.model_person.Employee;
 import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import java.util.List;
 public class ReadFileEmployee {
 
   private static final String PATH = "FuramaController/src/furama_da_nang/data/employeeList.csv";
-  public static List<Employee>  ReadListEmployee (){
+  public static List<Employee> readListEmployee(){
     List<Employee> employees = new ArrayList<>();
     BufferedReader bufferedReader = null;
     FileReader fileReader = null;

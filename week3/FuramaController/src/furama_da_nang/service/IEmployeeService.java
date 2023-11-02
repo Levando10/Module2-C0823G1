@@ -8,4 +8,12 @@ public interface IEmployeeService extends Service {
   void addEmployee(Employee employee);
 
   List<Employee> getListEmployee();
+
+  Employee findById(String idEmployee);
+
+  void editEmployee(Employee employee);
+
+  void deleteEmployee(String idEmployee);
+
+  Boolean checkIdOnly(String idEmployee);
 }

@@ -16,4 +16,20 @@ public class EmployeeController {
   public List<Employee> getListEmployee() {
   return iEmployeeService.getListEmployee();
   }
+
+  public Employee findById(String idEmployee) {
+  return iEmployeeService.findById(idEmployee);
+  }
+
+ public void editEmployee(Employee employee) {
+  iEmployeeService.editEmployee(employee);
+ }
+
+ public void deleteEmployee(String idEmployee) {
+  iEmployeeService.deleteEmployee(idEmployee);
+ }
+
+ public Boolean checkIdOnly(String idEmployee) {
+  return iEmployeeService.checkIdOnly(idEmployee);
+ }
 }

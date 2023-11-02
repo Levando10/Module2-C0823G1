@@ -3,12 +3,11 @@ package furama_da_nang.repository;
 import furama_da_nang.model.model_person.Employee;
 import furama_da_nang.utils.employee.ReadFileEmployee;
 import furama_da_nang.utils.employee.WriteFileEmployee;
-import java.util.ArrayList;
 import java.util.List;
 
-public class EmployeeRepository implements IEmployeeRepository{
+public class EmployeeRepository implements IEmployeeRepository {
 
-  private static List<Employee> employees = ReadFileEmployee.ReadListEmployee();
+  private static List<Employee> employees = ReadFileEmployee.readListEmployee();
 //  static {
 //   employees.add(  new Employee("2","văn độ","khác","1234567","0982009465","10/11/2002","dolevan055@gmail.com","Lễ tân","Đại học",9999.0));
 //    employees.add(  new Employee("3","lâm","nữ","1231234","0657567456","10/11/2002","dolevan055@gmail.com","Lễ tân","Đại học",9999.0));
@@ -19,11 +18,63 @@ public class EmployeeRepository implements IEmployeeRepository{
   @Override
   public void addEmployee(Employee employee) {
     employees.add(employee);
-    WriteFileEmployee.WriteListEmployee(employees);
+    WriteFileEmployee.writeListEmployee(employees);
   }
 
   @Override
   public List<Employee> getListEmployee() {
-    return employees;
+    return ReadFileEmployee.readListEmployee();
   }
+
+  @Override
+  public Employee findById(String idEmployee) {
+    for (Employee employee : employees) {
+      if (employee.getIdEmployee().equals(idEmployee)) {
+        return employee;
+      }
+    }
+    return null;
+  }
+
+  @Override
+  public void editEmployee(Employee employee) {
+    // employee = new Employee("1","văn độ","Nam","1234567","0982009465","10/11/2002","dolevan055@gmail.com","Lễ tân","Đại học",9999.0);
+    employees = ReadFileEmployee.readListEmployee();
+    for (Employee tempEdit : employees) {
+      if (tempEdit.getIdEmployee().equals(employee.getIdEmployee())) {
+        tempEdit.setName(employee.getName());
+        tempEdit.setGender(employee.getGender());
+        tempEdit.setIdentityNumber(employee.getIdentityNumber());
+        tempEdit.setPhoneNumber(employee.getPhoneNumber());
+        tempEdit.setBirthDay(employee.getBirthDay());
+        tempEdit.setEmail(employee.getEmail());
+        tempEdit.setPosition(employee.getPosition());
+        tempEdit.setLevelEducation(employee.getLevelEducation());
+        tempEdit.setSalary(employee.getSalary());
+      }
+    }
+    WriteFileEmployee.writeListEmployee(employees);
+  }
+
+  @Override
+  public void deleteEmployee(String idEmployee) {
+  for (Employee tempDelete : employees){
+    if (tempDelete.getIdEmployee().equals(idEmployee)){
+      employees.remove(tempDelete);
+    }
+  }
+  WriteFileEmployee.writeListEmployee(employees);
+  }
+
+  @Override
+  public Boolean checkIdOnly(String idEmployee) {
+    for (Employee checkId : employees){
+      if (checkId.getIdEmployee().equals(idEmployee)){
+        return true;
+      }
+    }
+    return false;
+  }
+
+
 }

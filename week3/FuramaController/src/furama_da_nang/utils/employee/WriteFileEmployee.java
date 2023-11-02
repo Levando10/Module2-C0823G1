@@ -11,7 +11,7 @@ public class WriteFileEmployee {
 
   private static final String PATH = "FuramaController/src/furama_da_nang/data/employeeList.csv";
 
-  public static void WriteListEmployee(List<Employee> employees) {
+  public static void writeListEmployee(List<Employee> employees) {
     File file = new File(PATH);
     FileWriter fileWriter = null;
     BufferedWriter bufferedWriter = null;

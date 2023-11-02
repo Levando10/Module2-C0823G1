@@ -18,4 +18,24 @@ IEmployeeRepository iEmployeeRepository = new EmployeeRepository();
 
     return iEmployeeRepository.getListEmployee();
   }
+
+  @Override
+  public Employee findById(String idEmployee) {
+    return iEmployeeRepository.findById(idEmployee);
+  }
+
+  @Override
+  public void editEmployee(Employee employee) {
+    iEmployeeRepository.editEmployee(employee);
+  }
+
+  @Override
+  public void deleteEmployee(String idEmployee) {
+    iEmployeeRepository.deleteEmployee(idEmployee);
+  }
+
+  @Override
+  public Boolean checkIdOnly(String idEmployee) {
+    return iEmployeeRepository.checkIdOnly(idEmployee);
+  }
 }

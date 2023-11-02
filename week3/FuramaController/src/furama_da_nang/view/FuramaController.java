@@ -10,72 +10,19 @@ public class FuramaController {
 
   public static void main(String[] args) {
     EmployeeController employeeController = new EmployeeController();
-    int choice;
+
     List<Employee> employees;
     Employee employee;
+    int choice;
 
     do {
-      System.out.println("----------------------------");
-      System.out.println("1. Employee Managemen ");
-      System.out.println("2. Customer Management ");
-      System.out.println("3. Facility Management ");
-      System.out.println("4. Booking Management\n" + "5. Promotion Management\n" + "6. Exit");
-      System.out.print("Nhập chức năng : ");
+      menuManagement();
       choice = Validation.checkInputLimit(1, 6);
       switch (choice) {
         case 1:
-          System.out.println("---------------Employee Management-------------");
-          System.out.println(
-              "1 Display list employees\n" + "2 Add new employee\n" + "3 Edit employee\n"
-                  + "4 Delete employee\n" + "5 Search by name employee\n" + "6 Return main menu");
-          System.out.print("Nhập chức năng : ");
-          choice = Validation.checkInputLimit(1, 6);
-          switch (choice) {
-            case 1:
-              employees = employeeController.getListEmployee();
-              if (employees.isEmpty()){
-                System.out.println("List rỗng");
-              } else {
-                for (Employee employee1 : employees){
-                  System.out.println(employee1);
-                }
-              }
-
-              break;
-            case 2:
-
-//              String idEmployee = inputIdEmployee();
-//              System.out.print("Nhập tên nhân viên : ");
-//              String name = Validation.checkInputString();
-//              String gender = inputGender();
-//              System.out.print("Nhập ngày sinh : ");
-//              String birth = Validation.checkInputString();
-//              System.out.print("Nhập căn cước : ");
-//              String idNumber = Validation.checkInputString();
-//              System.out.print("Nhập số điện thoại nhân viên : ");
-//              String phoneNumber = Validation.checkInputString();
-//              System.out.print("Nhập email : ");
-//              String email = Validation.checkInputString();
-//              String position = inputPosition();
-//              System.out.print("Nhập lương : ");
-//              Double salary = Validation.checkInputDouble();
-//             String levelEducation = inputLevelEducation();
-//             employee = new Employee(idEmployee,name,gender,idNumber,phoneNumber,birth,email,position,levelEducation,salary);
-             employee = new Employee("1","văn độ","Nam","1234567","0982009465","10/11/2002","dolevan055@gmail.com","Lễ tân","Đại học",9999.0);
-
-             employeeController.addEmployee(employee);
-
-             break;
-            case 3:
-              break;
-            case 4:
-              break;
-            case 5:
-              break;
-            case 6:
-              break;
-          }
+          menuEmployee(employeeController);
           break;
+
         case 2:
           System.out.println("---------------Customers Management-------------");
           System.out.println(
@@ -162,12 +109,144 @@ public class FuramaController {
 
 
       }
-    } while (true);
+    } while (choice != 6);
+  }
+
+  private static void menuEmployee(EmployeeController employeeController) {
+    List<Employee> employees;
+    Employee employee;
+    String idEmployee;
+    int employeeChoice;
+    Boolean checkYesNo;
+    do {
+      System.out.println("---------------Employee Management-------------");
+      System.out.println(
+          "1 Display list employees\n" + "2 Add new employee\n" + "3 Edit employee\n"
+              + "4 Delete employee\n" + "5 Search by name employee\n" + "6 Return main menu");
+      System.out.print("Nhập chức năng : ");
+      employeeChoice = Validation.checkInputLimit(1, 6);
+      switch (employeeChoice) {
+        case 1:
+          employees = employeeController.getListEmployee();
+          if (employees.isEmpty()) {
+            System.out.println("List rỗng");
+          } else {
+            for (Employee employee1 : employees) {
+              System.out.println(employee1);
+            }
+          }
+          menuEmployee(employeeController);
+          break;
+        case 2:
+          idEmployee = inputIdEmployee();
+          Boolean checkId = employeeController.checkIdOnly(idEmployee);
+          while (checkId) {
+            System.out.println("Vui lòng không nhập id trùng !!!");
+            idEmployee = inputIdEmployee();
+            checkId = employeeController.checkIdOnly(idEmployee);
+          }
+
+          employee = inputInformationEmployee();
+          employee.setIdEmployee(idEmployee);
+          employeeController.addEmployee(employee);
+          menuEmployee(employeeController);
+          break;
+        case 3:
+          employees = employeeController.getListEmployee();
+          if (employees.isEmpty()) {
+            System.out.println("List rỗng");
+          } else {
+            idEmployee = inputIdEmployee();
+            employee = employeeController.findById(idEmployee);
+            if (employee != null) {
+              System.out.println(employee);
+              System.out.print("Bạn có muốn sửa nhân viên này hay không : ");
+              checkYesNo = Validation.checkYesNo();
+              if (checkYesNo) {
+                employee = inputInformationEmployee();
+                employee.setIdEmployee(idEmployee);
+                employeeController.editEmployee(employee);
+              }
+            } else {
+              System.out.println("Không tìm thấy nhân viên hợp lệ!!!");
+            }
+          }
+
+          menuEmployee(employeeController);
+          break;
+        case 4:
+          employees = employeeController.getListEmployee();
+          if (employees.isEmpty()) {
+            System.out.println("List rỗng");
+          } else {
+            idEmployee = inputIdEmployee();
+            employee = employeeController.findById(idEmployee);
+            if (employee != null) {
+              System.out.println(employee);
+              System.out.print("Bạn có muốn xóa nhân viên này hay không : ");
+              checkYesNo = Validation.checkYesNo();
+              if (checkYesNo) {
+                employeeController.deleteEmployee(idEmployee);
+                System.out.println("Xóa thành công!!!");
+              }
+            } else {
+              System.out.println("Không tìm thấy!!!");
+            }
+          }
+          menuEmployee(employeeController);
+          break;
+        case 5:
+         employees = employeeController.getListEmployee();
+         if (employees.isEmpty()){
+           System.out.println("Danh sách rỗng!!!");
+         } else {
+           System.out.println("Nhập tên nhân viên cần tìm : ");
+           String nameSearch = Validation.checkInputString();
+
+         }
+
+
+
+
+          menuEmployee(employeeController);
+          break;
+      }
+      break;
+    } while (employeeChoice != 6);
+  }
+
+  private static void menuManagement() {
+    System.out.println("----------------------------");
+    System.out.println("1. Employee Management ");
+    System.out.println("2. Customer Management ");
+    System.out.println("3. Facility Management ");
+    System.out.println("4. Booking Management\n" + "5. Promotion Management\n" + "6. Exit");
+    System.out.print("Nhập chức năng : ");
   }
 
   private static String inputIdEmployee() {
     System.out.print("Nhập id : ");
-    return Validation.checkInputString();
+    return Validation.checkIdEmployee();
+  }
+
+  private static Employee inputInformationEmployee() {
+    System.out.print("Nhập tên nhân viên : ");
+    String name = Validation.checkInputString();
+    String gender = inputGender();
+    System.out.print("Nhập ngày sinh : ");
+    String birth = Validation.checkInputString();
+    System.out.print("Nhập căn cước : ");
+    String idNumber = Validation.checkInputString();
+    System.out.print("Nhập số điện thoại nhân viên : ");
+    String phoneNumber = Validation.checkNumberPhone();
+    System.out.print("Nhập email : ");
+    String email = Validation.checkEmail();
+    String position = inputPosition();
+    System.out.print("Nhập lương : ");
+    Double salary = Validation.checkInputDouble();
+    String levelEducation = inputLevelEducation();
+    return new Employee(name, gender, idNumber, phoneNumber, birth, email, position, levelEducation,
+        salary);
   }
 
   private static String inputGender() {
@@ -187,7 +266,7 @@ public class FuramaController {
   }
 
   private static String inputPosition() {
-    System.out.println(" Vị trí");
+    System.out.println(" \nVị trí");
     System.out.println("1. Lễ tân");
     System.out.println("2. Phục vụ");
     System.out.println("3. Chuyên viên");

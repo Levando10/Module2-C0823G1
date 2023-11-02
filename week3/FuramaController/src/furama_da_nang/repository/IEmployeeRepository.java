@@ -8,4 +8,12 @@ public interface IEmployeeRepository  extends Repository{
   void addEmployee(Employee employee);
 
   List<Employee> getListEmployee();
+
+  Employee findById(String idEmployee);
+
+  void editEmployee(Employee employee);
+
+  void deleteEmployee(String idEmployee);
+
+  Boolean checkIdOnly(String idEmployee);
 }
