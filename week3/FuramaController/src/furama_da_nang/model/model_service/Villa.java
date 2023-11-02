@@ -3,17 +3,17 @@ package furama_da_nang.model.model_service;
 
 public class Villa extends Facility{
 private String roomStandards;
-private Integer poolArea;
+private Double poolArea;
 private Integer floors;
 
 
   public Villa() {
   }
 
-  public Villa(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, String type, String roomStandards, Integer poolArea,
+  public Villa(String idService, String nameService, Double areaUseArea, Long leasePrice,
+      Integer maximumPeople, String rentalType, String roomStandards, Double poolArea,
       Integer floors) {
-    super(idService, nameService, areaUseArea, leasePrice, maximumPeople, value, type);
+    super(idService, nameService, areaUseArea, leasePrice, maximumPeople, rentalType);
     this.roomStandards = roomStandards;
     this.poolArea = poolArea;
     this.floors = floors;
@@ -27,11 +27,11 @@ private Integer floors;
     this.roomStandards = roomStandards;
   }
 
-  public Integer getPoolArea() {
+  public Double getPoolArea() {
     return poolArea;
   }
 
-  public void setPoolArea(Integer poolArea) {
+  public void setPoolArea(Double poolArea) {
     this.poolArea = poolArea;
   }
 

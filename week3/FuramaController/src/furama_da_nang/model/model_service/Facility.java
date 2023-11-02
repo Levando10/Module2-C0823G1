@@ -6,24 +6,22 @@ public abstract class Facility {
 
   private String idService;
   private String nameService;
-  private Integer areaUseArea;
+  private Double areaUseArea;
   private Long leasePrice;
   private Integer maximumPeople;
-  private Integer value;
-  private String type;
+  private String rentalType;
 
   public Facility() {
   }
 
-  public Facility(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, String type) {
+  public Facility(String idService, String nameService, Double areaUseArea, Long leasePrice,
+      Integer maximumPeople, String rentalType) {
     this.idService = idService;
     this.nameService = nameService;
     this.areaUseArea = areaUseArea;
     this.leasePrice = leasePrice;
     this.maximumPeople = maximumPeople;
-    this.value = value;
-    this.type = type;
+    this.rentalType = rentalType;
   }
 
   public String getIdService() {
@@ -42,11 +40,11 @@ public abstract class Facility {
     this.nameService = nameService;
   }
 
-  public Integer getAreaUseArea() {
+  public Double getAreaUseArea() {
     return areaUseArea;
   }
 
-  public void setAreaUseArea(Integer areaUseArea) {
+  public void setAreaUseArea(Double areaUseArea) {
     this.areaUseArea = areaUseArea;
   }
 
@@ -66,20 +64,12 @@ public abstract class Facility {
     this.maximumPeople = maximumPeople;
   }
 
-  public Integer getValue() {
-    return value;
+  public String getRentalType() {
+    return rentalType;
   }
 
-  public void setValue(Integer value) {
-    this.value = value;
-  }
-
-  public String getType() {
-    return type;
-  }
-
-  public void setType(String type) {
-    this.type = type;
+  public void setRentalType(String rentalType) {
+    this.rentalType = rentalType;
   }
 
   @Override
@@ -90,8 +80,7 @@ public abstract class Facility {
         ", areaUseArea=" + areaUseArea +
         ", leasePrice=" + leasePrice +
         ", maximumPeople=" + maximumPeople +
-        ", value=" + value +
-        ", type=" + type +
+        ", type=" + rentalType +
         '}';
   }
 }

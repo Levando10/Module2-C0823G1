@@ -8,9 +8,14 @@ public class House extends Facility{
   public House() {
   }
 
-  public House(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, String type, String roomStandards, Integer floors) {
-    super(idService, nameService, areaUseArea, leasePrice, maximumPeople, value, type);
+  public House(String roomStandards, Integer floors) {
+    this.roomStandards = roomStandards;
+    this.floors = floors;
+  }
+
+  public House(String idService, String nameService, Double areaUseArea, Long leasePrice,
+      Integer maximumPeople, String rentalType, String roomStandards, Integer floors) {
+    super(idService, nameService, areaUseArea, leasePrice, maximumPeople, rentalType);
     this.roomStandards = roomStandards;
     this.floors = floors;
   }
