@@ -24,4 +24,13 @@ private ICustomerService iCustomerService = new CustomerService();
   public void editCustomer(Customer customer) {
     iCustomerService.editCustomer(customer);
   }
+
+
+  public void deleteCustomer(String idCustomer) {
+    iCustomerService.deleteCustomer(idCustomer);
+  }
+
+  public List<Customer> searchCustomer(String nameSearch) {
+    return iCustomerService.searchCustomer(nameSearch);
+  }
 }

@@ -141,23 +141,51 @@ public class FuramaController {
               customer.setIdCustomer(idCustomer);
               customerController.editCustomer(customer);
                System.out.println("Sửa thành công");
-
              }
            } else {
              System.out.println("Không tìm thấy!!!");
            }
 
-
-
-
           }
-
-
-
           break;
         case 4:
+          customers = customerController.getListCustomer();
+          if (customers.isEmpty()){
+            System.out.println("Danh sách rỗng!!!");
+          } else {
+            idCustomer = inputIdCustomer();
+            customer = customerController.checkIdEmployee(idCustomer);
+            if (customer != null){
+              System.out.println(customer);
+              System.out.print("Bạn có muốn xóa thông tin khách hàng : ");
+              checkYesNo = Validation.checkYesNo();
+              if (checkYesNo){
+                  customerController.deleteCustomer(idCustomer);
+                System.out.println("Xóa thành công");
+              }
+            }else {
+              System.out.println("Không tìm thấy id khách hàng!!!");
+            }
+          }
           break;
         case 5:
+          String nameSearch;
+          customers = customerController.getListCustomer();
+          if (customers.isEmpty()){
+            System.out.println("Danh sách rỗng!!!");
+          } else {
+            System.out.println("Nhập tên khách hàng cần tìm kiếm : ");
+            nameSearch = Validation.checkInputString();
+            customers = customerController.searchCustomer(nameSearch);
+            if (!customers.isEmpty()){
+              for (Customer temp : customers){
+                System.out.println(temp);
+              }
+            } else {
+              System.out.println("Không tìm thấy");
+            }
+
+          }
           break;
         case 6:
           break;
@@ -255,7 +283,7 @@ public class FuramaController {
             System.out.println("Danh sách rỗng!!!");
           } else {
             System.out.print("Nhập tên nhân viên cần tìm : ");
-            String nameSearch = Validation.checkInputString();
+            String nameSearch = Validation.checkName();
             List<Employee> listSearch = employeeController.searchEmployee(nameSearch);
             if (listSearch != null) {
               for (Employee emSearch : listSearch) {
@@ -296,19 +324,19 @@ public class FuramaController {
 
   private static Employee inputInformationEmployee() {
     System.out.print("Nhập tên nhân viên : ");
-    String name = Validation.checkInputString();
+    String name = Validation.checkName();
     String gender = inputGender();
     System.out.print("Nhập ngày sinh : ");
     String birth = Validation.checkInputString();
     System.out.print("Nhập căn cước : ");
-    String idNumber = Validation.checkInputString();
+    String idNumber = Validation.checkIdentityNumber();
     System.out.print("Nhập số điện thoại nhân viên : ");
     String phoneNumber = Validation.checkNumberPhone();
     System.out.print("Nhập email : ");
     String email = Validation.checkEmail();
     String position = inputPosition();
     System.out.print("Nhập lương : ");
-    Double salary = Validation.checkInputDouble();
+    Double salary = Validation.checkSalary();
     String levelEducation = inputLevelEducation();
     return new Employee(name, gender, idNumber, phoneNumber, birth, email, position, levelEducation,
         salary);
@@ -316,12 +344,12 @@ public class FuramaController {
 
   private static Customer inputInformationCustomer() {
     System.out.print("Nhập tên khách hàng : ");
-    String name = Validation.checkInputString();
+    String name = Validation.checkName();
     String gender = inputGender();
     System.out.print("Nhập ngày sinh : ");
     String birth = Validation.checkInputString();
     System.out.print("Nhập căn cước : ");
-    String idNumber = Validation.checkInputString();
+    String idNumber = Validation.checkIdentityNumber();
     System.out.print("Nhập số điện thoại khách hàng : ");
     String phoneNumber = Validation.checkNumberPhone();
     System.out.print("Nhập email : ");

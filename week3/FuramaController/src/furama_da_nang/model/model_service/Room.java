@@ -1,6 +1,5 @@
 package furama_da_nang.model.model_service;
 
-import furama_da_nang.model.enums.RentalType;
 
 public class Room extends Facility{
   private String freeService;
@@ -9,7 +8,7 @@ public class Room extends Facility{
   }
 
   public Room(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, RentalType type, String freeService) {
+      Integer maximumPeople, Integer value, String type, String freeService) {
     super(idService, nameService, areaUseArea, leasePrice, maximumPeople, value, type);
     this.freeService = freeService;
   }

@@ -62,6 +62,7 @@ public class EmployeeRepository implements IEmployeeRepository {
   for (Employee tempDelete : employees){
     if (tempDelete.getIdEmployee().equals(idEmployee)){
       employees.remove(tempDelete);
+      break;
     }
   }
   WriteFileEmployee.writeListEmployee(employees);

@@ -1,6 +1,5 @@
 package furama_da_nang.model.model_service;
 
-import furama_da_nang.model.enums.RentalType;
 
 public class Villa extends Facility{
 private String roomStandards;
@@ -12,7 +11,7 @@ private Integer floors;
   }
 
   public Villa(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, RentalType type, String roomStandards, Integer poolArea,
+      Integer maximumPeople, Integer value, String type, String roomStandards, Integer poolArea,
       Integer floors) {
     super(idService, nameService, areaUseArea, leasePrice, maximumPeople, value, type);
     this.roomStandards = roomStandards;

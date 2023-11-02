@@ -28,4 +28,16 @@ public class CustomerService implements ICustomerService{
   public void editCustomer(Customer customer) {
     iCustomerRepository.editCustomer(customer);
   }
+
+  @Override
+  public void deleteCustomer(String idCustomer) {
+    iCustomerRepository.deleteCustomer(idCustomer);
+  }
+
+  @Override
+  public List<Customer> searchCustomer(String nameSearch) {
+    return iCustomerRepository.searchCustomer(nameSearch);
+  }
+
+
 }

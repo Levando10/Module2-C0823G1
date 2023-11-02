@@ -52,4 +52,28 @@ public class CustomerRepository implements ICustomerRepository {
     WriteFileCustomer.writeListCustomer(customers);
   }
 
+  @Override
+  public void deleteCustomer(String idCustomer) {
+    customers = ReadFileCustomer.readListCustomer();
+    for (Customer temp : customers){
+      if (temp.getIdCustomer().equals(idCustomer)){
+        customers.remove(temp);
+        break;
+      }
+    }
+  }
+
+  @Override
+  public List<Customer> searchCustomer(String nameSearch) {
+    customers = ReadFileCustomer.readListCustomer();
+    List<Customer> listSearch = new ArrayList<>();
+    for (Customer customer : customers){
+      if (customer.getName().toLowerCase().contains(nameSearch.toLowerCase())){
+        listSearch.add(customer);
+      }
+    }
+    return listSearch;
+  }
+
+
 }

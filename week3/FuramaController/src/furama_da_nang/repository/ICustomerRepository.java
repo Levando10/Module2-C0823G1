@@ -12,4 +12,9 @@ public interface ICustomerRepository  extends Repository{
   Customer checkIdEmployee(String idCustomer);
 
   void editCustomer(Customer customer);
+
+
+  void deleteCustomer(String idCustomer);
+
+  List<Customer> searchCustomer(String nameSearch);
 }

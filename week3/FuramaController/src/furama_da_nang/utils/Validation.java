@@ -66,6 +66,7 @@ public class Validation {
     }
   }
   public static Double checkInputDouble() {
+
     while (true) {
       try {
         return Double.parseDouble(sc.nextLine().trim());
@@ -75,6 +76,39 @@ public class Validation {
 
       }
     }
+  }
+
+  public static Double checkSalary() {
+    Double salary;
+    while (true) {
+      try {
+        salary = Double.parseDouble(sc.nextLine().trim());
+        while (salary <= 0){
+          System.out.print("Nhập lớn hơn 0 : ");
+          salary = Double.parseDouble(sc.nextLine().trim());
+        }
+        return salary;
+      } catch (NumberFormatException e) {
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
+
+      }
+    }
+  }
+
+  public static String checkName(){
+//    ^([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]|[\p{Lu}][\p{Ll}]{1,10})){0,5}$
+    String input;
+    while (true){
+      input = sc.nextLine();
+      if (input.matches("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$")){
+        return input;
+      } else {
+        System.err.println("Bạn nhập sai định dạng tên (không có số)!!!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+
   }
 
   public static int checkInputInteger() {
@@ -100,6 +134,21 @@ public class Validation {
         return input;
       }catch (NumberFormatException e){
         System.err.println("Nhập số điện thoại bắt đầu từ 0 và đủ 10 số !!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+  }
+  public static String checkIdentityNumber(){
+    String input;
+    while (true){
+      try {
+        input = sc.nextLine();
+        if (!input.matches("^\\d{9,12}$")){
+          throw new NumberFormatException();
+        }
+        return input;
+      }catch (NumberFormatException e){
+        System.err.println("Nhập số định danh phải đủ 9 hoặc 12 số !!!");
         System.err.print("Nhập lại : ");
       }
     }

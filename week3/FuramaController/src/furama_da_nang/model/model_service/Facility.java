@@ -1,6 +1,6 @@
 package furama_da_nang.model.model_service;
 
-import furama_da_nang.model.enums.RentalType;
+
 
 public abstract class Facility {
 
@@ -10,13 +10,13 @@ public abstract class Facility {
   private Long leasePrice;
   private Integer maximumPeople;
   private Integer value;
-  private RentalType type;
+  private String type;
 
   public Facility() {
   }
 
   public Facility(String idService, String nameService, Integer areaUseArea, Long leasePrice,
-      Integer maximumPeople, Integer value, RentalType type) {
+      Integer maximumPeople, Integer value, String type) {
     this.idService = idService;
     this.nameService = nameService;
     this.areaUseArea = areaUseArea;
@@ -74,11 +74,11 @@ public abstract class Facility {
     this.value = value;
   }
 
-  public RentalType getType() {
+  public String getType() {
     return type;
   }
 
-  public void setType(RentalType type) {
+  public void setType(String type) {
     this.type = type;
   }
 
