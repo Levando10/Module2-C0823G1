@@ -22,7 +22,7 @@ public class FuramaController {
       choice = Validation.checkInputLimit(1, 6);
       switch (choice) {
         case 1:
-          menuEmployee(employeeController);
+          EmployeeView.menuEmployee(employeeController);
           break;
 
         case 2:
@@ -209,116 +209,116 @@ public class FuramaController {
 
   }
 
-  private static void menuEmployee(EmployeeController employeeController) {
-    List<Employee> employees;
-    Employee employee;
-    String idEmployee;
-    int employeeChoice;
-    Boolean checkYesNo;
-    do {
-      System.out.println("---------------Employee Management-------------");
-      System.out.println(
-          """
-              1 Display list employees
-              2 Add new employee
-              3 Edit employee
-              4 Delete employee
-              5 Search by name employee
-              6 Return main menu""");
-      System.out.print("Nhập chức năng : ");
-      employeeChoice = Validation.checkInputLimit(1, 6);
-      switch (employeeChoice) {
-        case 1 -> {
-          employees = employeeController.getListEmployee();
-          if (employees.isEmpty()) {
-            System.out.println("List rỗng");
-          } else {
-            for (Employee employee1 : employees) {
-              System.out.println(employee1);
-            }
-          }
-          menuEmployee(employeeController);
-        }
-        case 2 -> {
-          idEmployee = inputIdEmployee();
-          Boolean checkId = employeeController.checkIdOnly(idEmployee);
-          while (checkId) {
-            System.out.println("Vui lòng không nhập id trùng !!!");
-            idEmployee = inputIdEmployee();
-            checkId = employeeController.checkIdOnly(idEmployee);
-          }
-          employee = inputInformationEmployee();
-          employee.setIdEmployee(idEmployee);
-          employeeController.addEmployee(employee);
-          menuEmployee(employeeController);
-        }
-        case 3 -> {
-          employees = employeeController.getListEmployee();
-          if (employees.isEmpty()) {
-            System.out.println("List rỗng");
-          } else {
-            idEmployee = inputIdEmployee();
-            employee = employeeController.findById(idEmployee);
-            if (employee != null) {
-              System.out.println(employee);
-              System.out.print("Bạn có muốn sửa nhân viên này hay không : ");
-              checkYesNo = Validation.checkYesNo();
-              if (checkYesNo) {
-                employee = inputInformationEmployee();
-                employee.setIdEmployee(idEmployee);
-                employeeController.editEmployee(employee);
-              }
-            } else {
-              System.out.println("Không tìm thấy nhân viên hợp lệ!!!");
-            }
-          }
-          menuEmployee(employeeController);
-        }
-        case 4 -> {
-          employees = employeeController.getListEmployee();
-          if (employees.isEmpty()) {
-            System.out.println("List rỗng");
-          } else {
-            idEmployee = inputIdEmployee();
-            employee = employeeController.findById(idEmployee);
-            if (employee != null) {
-              System.out.println(employee);
-              System.out.print("Bạn có muốn xóa nhân viên này hay không : ");
-              checkYesNo = Validation.checkYesNo();
-              if (checkYesNo) {
-                employeeController.deleteEmployee(idEmployee);
-                System.out.println("Xóa thành công!!!");
-              }
-            } else {
-              System.out.println("Không tìm thấy!!!");
-            }
-          }
-          menuEmployee(employeeController);
-        }
-        case 5 -> {
-          employees = employeeController.getListEmployee();
-          if (employees.isEmpty()) {
-            System.out.println("Danh sách rỗng!!!");
-          } else {
-            System.out.print("Nhập tên nhân viên cần tìm : ");
-            String nameSearch = Validation.checkInputString();
-            List<Employee> listSearch = employeeController.searchEmployee(nameSearch);
-            if (listSearch != null) {
-              for (Employee emSearch : listSearch) {
-                System.out.println(emSearch);
-              }
-            } else {
-              System.out.println("Không tìm thấy tên nhân viên!!!");
-            }
-
-
-          }
-          menuEmployee(employeeController);
-        }
-      }
-      break;
-    } while (employeeChoice != 6);
-  }
+//  private static void menuEmployee(EmployeeController employeeController) {
+//    List<Employee> employees;
+//    Employee employee;
+//    String idEmployee;
+//    int employeeChoice;
+//    Boolean checkYesNo;
+//    do {
+//      System.out.println("---------------Employee Management-------------");
+//      System.out.println(
+//          """
+//              1 Display list employees
+//              2 Add new employee
+//              3 Edit employee
+//              4 Delete employee
+//              5 Search by name employee
+//              6 Return main menu""");
+//      System.out.print("Nhập chức năng : ");
+//      employeeChoice = Validation.checkInputLimit(1, 6);
+//      switch (employeeChoice) {
+//        case 1 -> {
+//          employees = employeeController.getListEmployee();
+//          if (employees.isEmpty()) {
+//            System.out.println("List rỗng");
+//          } else {
+//            for (Employee employee1 : employees) {
+//              System.out.println(employee1);
+//            }
+//          }
+//          menuEmployee(employeeController);
+//        }
+//        case 2 -> {
+//          idEmployee = inputIdEmployee();
+//          Boolean checkId = employeeController.checkIdOnly(idEmployee);
+//          while (checkId) {
+//            System.out.println("Vui lòng không nhập id trùng !!!");
+//            idEmployee = inputIdEmployee();
+//            checkId = employeeController.checkIdOnly(idEmployee);
+//          }
+//          employee = inputInformationEmployee();
+//          employee.setIdEmployee(idEmployee);
+//          employeeController.addEmployee(employee);
+//          menuEmployee(employeeController);
+//        }
+//        case 3 -> {
+//          employees = employeeController.getListEmployee();
+//          if (employees.isEmpty()) {
+//            System.out.println("List rỗng");
+//          } else {
+//            idEmployee = inputIdEmployee();
+//            employee = employeeController.findById(idEmployee);
+//            if (employee != null) {
+//              System.out.println(employee);
+//              System.out.print("Bạn có muốn sửa nhân viên này hay không : ");
+//              checkYesNo = Validation.checkYesNo();
+//              if (checkYesNo) {
+//                employee = inputInformationEmployee();
+//                employee.setIdEmployee(idEmployee);
+//                employeeController.editEmployee(employee);
+//              }
+//            } else {
+//              System.out.println("Không tìm thấy nhân viên hợp lệ!!!");
+//            }
+//          }
+//          menuEmployee(employeeController);
+//        }
+//        case 4 -> {
+//          employees = employeeController.getListEmployee();
+//          if (employees.isEmpty()) {
+//            System.out.println("List rỗng");
+//          } else {
+//            idEmployee = inputIdEmployee();
+//            employee = employeeController.findById(idEmployee);
+//            if (employee != null) {
+//              System.out.println(employee);
+//              System.out.print("Bạn có muốn xóa nhân viên này hay không : ");
+//              checkYesNo = Validation.checkYesNo();
+//              if (checkYesNo) {
+//                employeeController.deleteEmployee(idEmployee);
+//                System.out.println("Xóa thành công!!!");
+//              }
+//            } else {
+//              System.out.println("Không tìm thấy!!!");
+//            }
+//          }
+//          menuEmployee(employeeController);
+//        }
+//        case 5 -> {
+//          employees = employeeController.getListEmployee();
+//          if (employees.isEmpty()) {
+//            System.out.println("Danh sách rỗng!!!");
+//          } else {
+//            System.out.print("Nhập tên nhân viên cần tìm : ");
+//            String nameSearch = Validation.checkInputString();
+//            List<Employee> listSearch = employeeController.searchEmployee(nameSearch);
+//            if (listSearch != null) {
+//              for (Employee emSearch : listSearch) {
+//                System.out.println(emSearch);
+//              }
+//            } else {
+//              System.out.println("Không tìm thấy tên nhân viên!!!");
+//            }
+//
+//
+//          }
+//          menuEmployee(employeeController);
+//        }
+//      }
+//      break;
+//    } while (employeeChoice != 6);
+//  }
 
   private static void menuManagement() {
     System.out.println("----------------------------");
