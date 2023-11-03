@@ -1,5 +1,9 @@
 package furama_da_nang.utils;
 
+import furama_da_nang.model.model_person.Customer;
+import java.time.LocalDate;
+import java.time.Period;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class Validation {
@@ -191,6 +195,84 @@ public class Validation {
       }
     }
   }
+  public static String checkIdVilla(){
+    String input;
+    while (true){
+      input = sc.nextLine();
+      if (input.matches("SVVL-\\d{4}$")){
+        return input;
+      } else {
+        System.err.println("Bạn nên nhập id theo định dạng (SVVL-YYYY) Y số từ  0-9!!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+  }
+  public static String checkIdRoom(){
+    String input;
+    while (true){
+      input = sc.nextLine();
+      if (input.matches("SVRO-\\d{4}$")){
+        return input;
+      } else {
+        System.err.println("Bạn nên nhập id theo định dạng (SVRO-YYYY) Y số từ  0-9!!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+  }
+  public static String checkIdHouse(){
+    String input;
+    while (true){
+      input = sc.nextLine();
+      if (input.matches("SVHO-\\d{4}$")){
+        return input;
+      } else {
+        System.err.println("Bạn nên nhập id theo định dạng (SVHO-YYYY) Y số từ  0-9!!!");
+        System.err.print("Nhập lại : ");
+      }
+    }
+  }
+
+  public static String inputGender() {
+    System.out.println(" \nGiới tính");
+    System.out.println("1. Nam");
+    System.out.println("2. Nữ");
+    System.out.println("3. Khác");
+    System.out.print("Nhập giới tính : ");
+    int chooseGender = checkInputLimit(1, 3);
+    return switch (chooseGender) {
+      case 1 -> "Nam";
+      case 2 -> "Nữ";
+      case 3 -> "Khác";
+      default -> "";
+    };
+  }
+
+  public static String inputBirthday() {
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+    String birthday = null;
+    boolean valid = false;
+    LocalDate today;
+    Period age;
+    LocalDate birthDate;
+    while (!valid){
+      System.out.print("Nhập ngày sinh (mm/dd/YYYY): ");
+      birthday = sc.nextLine().trim();
+      try {
+         birthDate = LocalDate.parse(birthday, formatter);
+         today = LocalDate.now();
+         age = Period.between(birthDate, today);
+        if (age.getYears() >= 18) {
+          valid = true;
+        } else {
+          System.out.println("Bạn chưa đủ 18 tuổi. Nhập lại.");
+        }
+      } catch (Exception e) {
+        System.out.println("Ngày sinh không hợp lệ theo định dạng (mm/dd/YYYY): ");
+      }
+    }
+    return birthday;
+  }
+
 
 
 }

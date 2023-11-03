@@ -123,9 +123,9 @@ public class EmployeeView {
   private static Employee inputInformationEmployee() {
     System.out.print("Nhập tên nhân viên : ");
     String name = Validation.checkName();
-    String gender = inputGender();
+    String gender = Validation.inputGender();
     System.out.print("Nhập ngày sinh : ");
-    String birth = Validation.checkInputString();
+    String birth = Validation.inputBirthday();
     System.out.print("Nhập căn cước : ");
     String idNumber = Validation.checkIdentityNumber();
     System.out.print("Nhập số điện thoại nhân viên : ");
@@ -139,20 +139,7 @@ public class EmployeeView {
     return new Employee(name, gender, idNumber, phoneNumber, birth, email, position, levelEducation,
         salary);
   }
-  private static String inputGender() {
-    System.out.println(" \nGiới tính");
-    System.out.println("1. Nam");
-    System.out.println("2. Nữ");
-    System.out.println("3. Khác");
-    System.out.print("Nhập giới tính : ");
-    int chooseGender = Validation.checkInputLimit(1, 3);
-    return switch (chooseGender) {
-      case 1 -> "Nam";
-      case 2 -> "Nữ";
-      case 3 -> "Khác";
-      default -> "";
-    };
-  }
+
 
   private static String inputPosition() {
     System.out.println(" \nVị trí");
