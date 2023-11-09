@@ -17,4 +17,12 @@ public class FacilityController {
   public void addService(Facility facility) {
     iFacilityService.addService(facility);
   }
+
+  public Facility checkDeleteFacility(String idFacility) {
+    return iFacilityService.checkDeleteFacility(idFacility);
+  }
+
+  public void deleteFacility(String idFacility) {
+    iFacilityService.deleteFacility(idFacility);
+  }
 }

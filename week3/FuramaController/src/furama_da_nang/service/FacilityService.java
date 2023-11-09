@@ -19,5 +19,15 @@ public class FacilityService implements IFacilityService{
     iFacilityRepository.addService(facility);
   }
 
+  @Override
+  public Facility checkDeleteFacility(String idFacility) {
+    return iFacilityRepository.checkDeleteFacility(idFacility);
+  }
+
+  @Override
+  public void deleteFacility(String idFacility) {
+    iFacilityRepository.deleteFacility(idFacility);
+  }
+
 
 }

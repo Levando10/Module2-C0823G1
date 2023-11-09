@@ -17,8 +17,8 @@ private ICustomerService iCustomerService = new CustomerService();
     iCustomerService.addCustomer(customer);
   }
 
-  public Customer checkIdEmployee(String idCustomer) {
-    return iCustomerService.checkIdEmployee(idCustomer);
+  public Customer checkIdCustomer(String idCustomer) {
+    return iCustomerService.checkIdCustomer(idCustomer);
   }
 
   public void editCustomer(Customer customer) {

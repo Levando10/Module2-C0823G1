@@ -8,4 +8,8 @@ public interface IFacilityRepository  extends Repository{
   Map<Facility, Integer> displayListFacility();
 
   void addService(Facility facility);
+
+  Facility checkDeleteFacility(String idFacility);
+
+  void deleteFacility(String idFacility);
 }

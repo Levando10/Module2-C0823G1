@@ -12,9 +12,10 @@ import java.util.Map;
 import java.util.Set;
 
 public class WriteFileFacility {
+
   private static final String PATH = "FuramaController/src/furama_da_nang/data/facilityList.csv";
 
-  public static void writeListFacility(Map<Facility,Integer> facilityIntegerMap){
+  public static void writeListFacility(Map<Facility, Integer> facilityIntegerMap) {
 
     File file = new File(PATH);
     FileWriter fileWriter;
@@ -24,31 +25,39 @@ public class WriteFileFacility {
       fileWriter = new FileWriter(file);
       bufferedWriter = new BufferedWriter(fileWriter);
       keySet = facilityIntegerMap.keySet();
-      for (Facility temp : keySet){
-        if (temp instanceof Villa){
-          bufferedWriter.write(temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + "," +
-              temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType() + "," + ((Villa) temp).getRoomStandards() + "," +
-              ((Villa) temp).getFloors() + "," + ((Villa) temp).getPoolArea() + "," + facilityIntegerMap.get(temp));
+      for (Facility temp : keySet) {
+        if (temp instanceof Villa) {
+          bufferedWriter.write(
+              temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + ","
+                  +
+                  temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType()
+                  + "," + ((Villa) temp).getRoomStandards() + "," +
+                  ((Villa) temp).getFloors() + "," + ((Villa) temp).getPoolArea() + ","
+                  + facilityIntegerMap.get(temp));
           bufferedWriter.newLine();
-        }
-         else if (temp instanceof Room){
-          bufferedWriter.write(temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + "," +
-              temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType() + "," + ((Room) temp).getFreeService()  + facilityIntegerMap.get(temp));
+        } else if (temp instanceof Room) {
+          bufferedWriter.write(
+              temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + ","
+                  +
+                  temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType()
+                  + "," + ((Room) temp).getFreeService() + "," + facilityIntegerMap.get(temp));
           bufferedWriter.newLine();
-        }
-        else if (temp instanceof House){
-          bufferedWriter.write(temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + "," +
-              temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType() + "," + ((House) temp).getRoomStandards()  +((House) temp).getFloors() + "," + facilityIntegerMap.get(temp));
+        } else if (temp instanceof House) {
+          bufferedWriter.write(
+              temp.getIdService() + "," + temp.getNameService() + "," + temp.getAreaUseArea() + ","
+                  +
+                  temp.getLeasePrice() + "," + temp.getMaximumPeople() + "," + temp.getRentalType()
+                  + "," + ((House) temp).getRoomStandards() + "," + ((House) temp).getFloors() + ","
+                  + facilityIntegerMap.get(temp));
           bufferedWriter.newLine();
         }
       }
 
-bufferedWriter.flush();
+      bufferedWriter.flush();
     } catch (IOException e) {
       throw new RuntimeException(e);
-    }
-    finally {
-      if (bufferedWriter != null){
+    } finally {
+      if (bufferedWriter != null) {
         try {
           bufferedWriter.close();
         } catch (IOException e) {

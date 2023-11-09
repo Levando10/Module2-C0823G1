@@ -10,6 +10,7 @@ private Double poolArea;
   public Villa() {
   }
 
+
   public Villa(String idService, String nameService, Double areaUseArea, Long leasePrice,
       Integer maximumPeople, String rentalType, String roomStandards, Integer floors,
       Double poolArea) {

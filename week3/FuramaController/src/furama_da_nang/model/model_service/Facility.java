@@ -14,6 +14,15 @@ public abstract class Facility {
   public Facility() {
   }
 
+  public Facility(String nameService, Double areaUseArea, Long leasePrice, Integer maximumPeople,
+      String rentalType) {
+    this.nameService = nameService;
+    this.areaUseArea = areaUseArea;
+    this.leasePrice = leasePrice;
+    this.maximumPeople = maximumPeople;
+    this.rentalType = rentalType;
+  }
+
   public Facility(String idService, String nameService, Double areaUseArea, Long leasePrice,
       Integer maximumPeople, String rentalType) {
     this.idService = idService;

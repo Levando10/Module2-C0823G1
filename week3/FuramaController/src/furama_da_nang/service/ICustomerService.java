@@ -10,7 +10,7 @@ public interface ICustomerService extends Service{
 
   void addCustomer(Customer customer);
 
-  Customer checkIdEmployee(String idCustomer);
+  Customer checkIdCustomer(String idCustomer);
 
   void editCustomer(Customer customer);
 

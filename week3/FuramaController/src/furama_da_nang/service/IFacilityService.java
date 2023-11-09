@@ -10,4 +10,8 @@ public interface IFacilityService extends Service{
 
 
   void addService(Facility facility);
+
+  Facility checkDeleteFacility(String idFacility);
+
+  void deleteFacility(String idFacility);
 }

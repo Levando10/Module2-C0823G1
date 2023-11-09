@@ -20,8 +20,8 @@ public class CustomerService implements ICustomerService{
   }
 
   @Override
-  public Customer checkIdEmployee(String idCustomer) {
-    return iCustomerRepository.checkIdEmployee(idCustomer);
+  public Customer checkIdCustomer(String idCustomer) {
+    return iCustomerRepository.checkIdCustomer(idCustomer);
   }
 
   @Override

@@ -24,7 +24,7 @@ public class CustomerRepository implements ICustomerRepository {
   }
 
   @Override
-  public Customer checkIdEmployee(String idCustomer) {
+  public Customer checkIdCustomer(String idCustomer) {
     customers = ReadFileCustomer.readListCustomer();
     for (Customer customer : customers){
       if (customer.getIdCustomer().equals(idCustomer)){

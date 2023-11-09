@@ -1,9 +1,12 @@
 package furama_da_nang.utils;
 
-import furama_da_nang.model.model_person.Customer;
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.Period;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import java.util.Scanner;
 
 public class Validation {
@@ -15,7 +18,7 @@ public class Validation {
     int result;
     while (true) {
       try {
-         result = Integer.parseInt(sc.nextLine());
+        result = Integer.parseInt(sc.nextLine());
         if (result < min || result > max) {
           throw new NumberFormatException();
         }
@@ -29,7 +32,7 @@ public class Validation {
   public static String checkInputString() {
     String result;
     while (true) {
-       result = sc.nextLine().trim();
+      result = sc.nextLine().trim();
       if (result.length() == 0) {
         System.err.println("Not Empty!!!");
         System.out.print("\nEnter again : ");
@@ -41,12 +44,12 @@ public class Validation {
   }
 
 
-  public static Boolean checkYesNo(){
+  public static Boolean checkYesNo() {
     String result;
     while (true) {
-       result = checkInputString();
+      result = checkInputString();
       if (result.matches(YES_NO_VALID)) {
-        if (result.charAt(0) == 'y' || result.charAt(0) == 'Y'){
+        if (result.charAt(0) == 'y' || result.charAt(0) == 'Y') {
           return true;
         } else {
           return false;
@@ -58,10 +61,18 @@ public class Validation {
     }
   }
 
-  public static Long checkInputLong() {
+
+  public static Long checkInputRental() {
+    Long rentalInput;
     while (true) {
       try {
-        return Long.parseLong(sc.nextLine().trim());
+        rentalInput = Long.parseLong(sc.nextLine().trim());
+        while (rentalInput <= 0) {
+          System.out.println("Nhập giá cho thuê là số dương!!!");
+          System.out.print("Enter again: ");
+          rentalInput = Long.parseLong(sc.nextLine().trim());
+        }
+        return rentalInput;
       } catch (NumberFormatException e) {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");
@@ -69,11 +80,20 @@ public class Validation {
       }
     }
   }
-  public static Double checkInputDouble() {
+
+
+  public static Double checkInputArea() {
+    Double areaUse;
 
     while (true) {
       try {
-        return Double.parseDouble(sc.nextLine().trim());
+        areaUse = Double.parseDouble(sc.nextLine().trim());
+        while (areaUse <= 30) {
+          System.out.println("Nhập diện tích lớn hơn 30!!!");
+          System.out.print("Enter again: ");
+          areaUse = Double.parseDouble(sc.nextLine().trim());
+        }
+        return areaUse;
       } catch (NumberFormatException e) {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");
@@ -87,7 +107,7 @@ public class Validation {
     while (true) {
       try {
         salary = Double.parseDouble(sc.nextLine().trim());
-        while (salary <= 0){
+        while (salary <= 0) {
           System.out.print("Nhập lớn hơn 0 : ");
           salary = Double.parseDouble(sc.nextLine().trim());
         }
@@ -100,12 +120,13 @@ public class Validation {
     }
   }
 
-  public static String checkName(){
+  public static String checkName() {
 //    ^([\p{Lu}][\p{Ll}]{1,8})(\s([\p{Lu}]|[\p{Lu}][\p{Ll}]{1,10})){0,5}$
     String input;
-    while (true){
+    while (true) {
       input = sc.nextLine();
-      if (input.matches("^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$")){
+      if (input.matches(
+          "^([\\p{Lu}][\\p{Ll}]{1,8})(\\s([\\p{Lu}]|[\\p{Lu}][\\p{Ll}]{1,10})){0,5}$")) {
         return input;
       } else {
         System.err.println("Bạn nhập sai định dạng tên (không có số)!!!!");
@@ -122,46 +143,85 @@ public class Validation {
       } catch (NumberFormatException e) {
         System.err.print("Must be input number!!!\n");
         System.err.print("Enter again : ");
+      }
+    }
+  }
+
+  public static int checkInputLeastZero() {
+    Integer checkLeastZero;
+    while (true) {
+      try {
+        checkLeastZero = Integer.parseInt(sc.nextLine().trim());
+        while (checkLeastZero < 0) {
+          System.out.println("Phải là số dương!!!");
+          System.out.print("Enter again: ");
+          checkLeastZero = Integer.parseInt(sc.nextLine().trim());
+        }
+        return checkLeastZero;
+      } catch (NumberFormatException e) {
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
+      }
+    }
+  }
+
+  public static int checkInputMaxPeople() {
+    Integer maxPeople;
+    while (true) {
+      try {
+        maxPeople = Integer.parseInt(sc.nextLine().trim());
+        while (maxPeople <= 0 || maxPeople >= 20) {
+          System.out.print("Nhập số lượng trong khoảng (lớn hơn 0 và bé hơn 20) !!!");
+          System.out.print("Enter again: ");
+          maxPeople = Integer.parseInt(sc.nextLine().trim());
+        }
+        return maxPeople;
+      } catch (NumberFormatException e) {
+        System.err.print("Must be input number!!!\n");
+        System.err.print("Enter again : ");
 
       }
     }
   }
 
-  public static String checkNumberPhone(){
+
+  public static String checkNumberPhone() {
     String input;
-    while (true){
+    while (true) {
       try {
-         input = sc.nextLine();
-        if (!input.matches("^0\\d{9}$")){
+        input = sc.nextLine();
+        if (!input.matches("^0\\d{9}$")) {
           throw new NumberFormatException();
         }
         return input;
-      }catch (NumberFormatException e){
+      } catch (NumberFormatException e) {
         System.err.println("Nhập số điện thoại bắt đầu từ 0 và đủ 10 số !!!");
         System.err.print("Nhập lại : ");
       }
     }
   }
-  public static String checkIdentityNumber(){
+
+  public static String checkIdentityNumber() {
     String input;
-    while (true){
+    while (true) {
       try {
         input = sc.nextLine();
-        if (!input.matches("^\\d{9,12}$")){
+        if (!input.matches("^\\d{9,12}$")) {
           throw new NumberFormatException();
         }
         return input;
-      }catch (NumberFormatException e){
+      } catch (NumberFormatException e) {
         System.err.println("Nhập số định danh phải đủ 9 hoặc 12 số !!!");
         System.err.print("Nhập lại : ");
       }
     }
   }
-  public static String checkEmail(){
+
+  public static String checkEmail() {
     String input;
-    while (true){
-       input = sc.nextLine();
-      if (input.matches("^[a-zA-Z0-9]+[a-zA-Z0-9]*@[a-zA-Z0-9]+(\\.[a-zA-Z0-9]+)$")){
+    while (true) {
+      input = sc.nextLine();
+      if (input.matches("^[a-zA-Z0-9._-]{5,40}@[a-zA-Z0-9]{1,30}(\\.[a-zA-Z0-9]{1,10})$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập email theo định dạng (abc@domain.com)");
@@ -171,11 +231,12 @@ public class Validation {
     }
 
   }
-  public static String checkIdEmployee(){
+
+  public static String checkIdEmployee() {
     String input;
-    while (true){
-       input = sc.nextLine();
-      if (input.matches("NV-\\d{4}$")){
+    while (true) {
+      input = sc.nextLine();
+      if (input.matches("NV-\\d{4}$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập id theo định dạng (NV-YYYY) Y số từ  0-9!!!");
@@ -183,11 +244,12 @@ public class Validation {
       }
     }
   }
-  public static String checkIdCustomer(){
+
+  public static String checkIdCustomer() {
     String input;
-    while (true){
-       input = sc.nextLine();
-      if (input.matches("KH-\\d{4}$")){
+    while (true) {
+      input = sc.nextLine();
+      if (input.matches("KH-\\d{4}$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập id theo định dạng (KH-YYYY) Y số từ  0-9!!!");
@@ -195,11 +257,12 @@ public class Validation {
       }
     }
   }
-  public static String checkIdVilla(){
+
+  public static String checkIdVilla() {
     String input;
-    while (true){
+    while (true) {
       input = sc.nextLine();
-      if (input.matches("SVVL-\\d{4}$")){
+      if (input.matches("SVVL-\\d{4}$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập id theo định dạng (SVVL-YYYY) Y số từ  0-9!!!");
@@ -207,11 +270,12 @@ public class Validation {
       }
     }
   }
-  public static String checkIdRoom(){
+
+  public static String checkIdRoom() {
     String input;
-    while (true){
+    while (true) {
       input = sc.nextLine();
-      if (input.matches("SVRO-\\d{4}$")){
+      if (input.matches("SVRO-\\d{4}$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập id theo định dạng (SVRO-YYYY) Y số từ  0-9!!!");
@@ -219,11 +283,12 @@ public class Validation {
       }
     }
   }
-  public static String checkIdHouse(){
+
+  public static String checkIdHouse() {
     String input;
-    while (true){
+    while (true) {
       input = sc.nextLine();
-      if (input.matches("SVHO-\\d{4}$")){
+      if (input.matches("SVHO-\\d{4}$")) {
         return input;
       } else {
         System.err.println("Bạn nên nhập id theo định dạng (SVHO-YYYY) Y số từ  0-9!!!");
@@ -254,13 +319,13 @@ public class Validation {
     LocalDate today;
     Period age;
     LocalDate birthDate;
-    while (!valid){
+    while (!valid) {
       System.out.print("Nhập ngày sinh (mm/dd/YYYY): ");
       birthday = sc.nextLine().trim();
       try {
-         birthDate = LocalDate.parse(birthday, formatter);
-         today = LocalDate.now();
-         age = Period.between(birthDate, today);
+        birthDate = LocalDate.parse(birthday, formatter);
+        today = LocalDate.now();
+        age = Period.between(birthDate, today);
         if (age.getYears() >= 18) {
           valid = true;
         } else {
@@ -273,6 +338,16 @@ public class Validation {
     return birthday;
   }
 
+  public static boolean isValidDate(String dateStr) {
+    SimpleDateFormat dateFormat = new SimpleDateFormat("d/MM/yyyy");
+    dateFormat.setLenient(false);
+      try {
+        Date date = dateFormat.parse(dateStr);
+        return true;
+      } catch (ParseException e) {
+        return false;
+      }
 
 
+  }
 }

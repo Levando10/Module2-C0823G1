@@ -6,6 +6,7 @@ import furama_da_nang.utils.Validation;
 import java.util.List;
 
 public class EmployeeView {
+
   public static void menuEmployee(EmployeeController employeeController) {
     List<Employee> employees;
     Employee employee;
@@ -34,20 +35,30 @@ public class EmployeeView {
               System.out.println(employee1);
             }
           }
-          menuEmployee(employeeController);
+          continue;
         }
         case 2 -> {
-          idEmployee = inputIdEmployee();
-          Boolean checkId = employeeController.checkIdOnly(idEmployee);
-          while (checkId) {
-            System.out.println("Vui lòng không nhập id trùng !!!");
+//          idEmployee = inputIdEmployee();
+//          Boolean checkId = employeeController.checkIdOnly(idEmployee);
+//          while (checkId) {
+//            System.out.println("Vui lòng không nhập id trùng !!!");
+//            idEmployee = inputIdEmployee();
+//            checkId = employeeController.checkIdOnly(idEmployee);
+//          }
+          Boolean checkId;
+
+          do {
             idEmployee = inputIdEmployee();
             checkId = employeeController.checkIdOnly(idEmployee);
-          }
+            if (checkId) {
+              System.out.println("Vui lòng không nhập id trùng !!!");
+            }
+          } while (checkId);
+
           employee = inputInformationEmployee();
           employee.setIdEmployee(idEmployee);
           employeeController.addEmployee(employee);
-          menuEmployee(employeeController);
+          continue;
         }
         case 3 -> {
           employees = employeeController.getListEmployee();
@@ -69,7 +80,7 @@ public class EmployeeView {
               System.out.println("Không tìm thấy nhân viên hợp lệ!!!");
             }
           }
-          menuEmployee(employeeController);
+          continue;
         }
         case 4 -> {
           employees = employeeController.getListEmployee();
@@ -90,7 +101,7 @@ public class EmployeeView {
               System.out.println("Không tìm thấy!!!");
             }
           }
-          menuEmployee(employeeController);
+          continue;
         }
         case 5 -> {
           employees = employeeController.getListEmployee();
@@ -110,16 +121,18 @@ public class EmployeeView {
 
 
           }
-          menuEmployee(employeeController);
+          continue;
         }
       }
       break;
-    } while (employeeChoice != 6);
+    } while (true);
   }
+
   private static String inputIdEmployee() {
     System.out.print("Nhập id : ");
     return Validation.checkIdEmployee();
   }
+
   private static Employee inputInformationEmployee() {
     System.out.print("Nhập tên nhân viên : ");
     String name = Validation.checkName();

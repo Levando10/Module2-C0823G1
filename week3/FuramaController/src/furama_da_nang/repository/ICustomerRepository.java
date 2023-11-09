@@ -9,7 +9,7 @@ public interface ICustomerRepository  extends Repository{
 
   void addCustomer(Customer customer);
 
-  Customer checkIdEmployee(String idCustomer);
+  Customer checkIdCustomer(String idCustomer);
 
   void editCustomer(Customer customer);
 

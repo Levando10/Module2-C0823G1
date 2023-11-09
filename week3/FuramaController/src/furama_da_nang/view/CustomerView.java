@@ -49,7 +49,7 @@ public class CustomerView {
             System.out.println("Danh sách rỗng!!!");
           } else {
             idCustomer = inputIdCustomer();
-            customer = customerController.checkIdEmployee(idCustomer);
+            customer = customerController.checkIdCustomer(idCustomer);
             if (customer != null) {
               System.out.println(customer);
               System.out.print("Bạn có muốn sửa thông tin khách hàng : ");
@@ -72,7 +72,7 @@ public class CustomerView {
             System.out.println("Danh sách rỗng!!!");
           } else {
             idCustomer = inputIdCustomer();
-            customer = customerController.checkIdEmployee(idCustomer);
+            customer = customerController.checkIdCustomer(idCustomer);
             if (customer != null) {
               System.out.println(customer);
               System.out.print("Bạn có muốn xóa thông tin khách hàng : ");
